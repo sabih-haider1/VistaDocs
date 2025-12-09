@@ -1,0 +1,17 @@
+{
+  "name": "vistadocs-center",
+  "version": "1.0.0",
+  "description": "VistaDocs Center - Complete Visa & Document Solutions",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": ["visa", "documents", "express", "static-site"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  }
+}

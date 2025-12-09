@@ -1,0 +1,46 @@
+<!-- Header Navigation -->
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <span class="logo-text">VistaDocs</span>
+          <span class="logo-accent">Center</span>
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Navigation Links -->
+      <nav class="nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">About Us</a></li>
+          <li><a href="/services" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">Services</a></li>
+          <li><a href="/contact" class="nav-link <%= currentPage === 'contact' ? 'active' : '' %>">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('mobileMenuToggle');
+    const nav = document.getElementById('mainNav');
+    
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        toggle.classList.toggle('active');
+      });
+    }
+  });
+</script>
