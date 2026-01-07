@@ -12,6 +12,7 @@ interface BreadcrumbItem {
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
 }
+// Breadcrumbs component to display navigation path
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
