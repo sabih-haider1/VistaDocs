@@ -50,52 +50,81 @@ export default function AboutPageClient() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto space-y-8">
+            {/* Mission */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-12"
+              className="relative"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
-              <p className="text-lg text-gray-600">
-                To simplify visa processing and provide cutting-edge technical solutions that empower 
-                small and medium businesses in the UAE to thrive. We combine expertise, efficiency, 
-                and personalized service to deliver results that matter.
-              </p>
+              <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 md:p-10 border-2 border-primary-100 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+                    <Target className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Our Mission</h2>
+                </div>
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed pl-0 md:pl-18">
+                  To simplify visa processing and provide cutting-edge technical solutions that empower 
+                  small and medium businesses in the UAE to thrive. We combine expertise, efficiency, 
+                  and personalized service to deliver results that matter.
+                </p>
+              </div>
             </motion.div>
 
+            {/* Vision */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-12"
+              transition={{ delay: 0.1 }}
+              className="relative"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
-              <p className="text-lg text-gray-600">
-                To be the most trusted and innovative service provider in the UAE, known for 
-                excellence in visa processing and technical implementations that help businesses 
-                grow and succeed.
-              </p>
+              <div className="bg-gradient-to-br from-secondary-50 to-white rounded-2xl p-8 md:p-10 border-2 border-secondary-100 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center shadow-md">
+                    <Eye className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Our Vision</h2>
+                </div>
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed pl-0 md:pl-18">
+                  To be the most trusted and innovative service provider in the UAE, known for 
+                  excellence in visa processing and technical implementations that help businesses 
+                  grow and succeed.
+                </p>
+              </div>
             </motion.div>
 
+            {/* Who We Serve */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Who We Serve</h2>
-              <p className="text-lg text-gray-600 mb-4">
-                VistaDocs Center specializes in serving small and medium-sized businesses (SMBs and SMEs) 
-                across the UAE. We understand the unique challenges faced by growing businesses and provide 
-                services tailored to your scale and requirements.
-              </p>
-              <p className="text-lg text-gray-600">
-                Whether you need visa processing for your team, technical solutions to streamline operations, 
-                or both, we're here to support your business journey with professional, reliable service.
-              </p>
+              <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 md:p-10 border-2 border-purple-100 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-md">
+                    <Users className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Who We Serve</h2>
+                </div>
+                <div className="space-y-4 pl-0 md:pl-18">
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    VistaDocs Center specializes in serving small and medium-sized businesses (SMBs and SMEs) 
+                    across the UAE. We understand the unique challenges faced by growing businesses and provide 
+                    services tailored to your scale and requirements.
+                  </p>
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    Whether you need visa processing for your team, technical solutions to streamline operations, 
+                    or both, we're here to support your business journey with professional, reliable service.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
