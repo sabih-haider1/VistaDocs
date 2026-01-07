@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-white text-xl font-bold mb-4 gradient-text">VistaDocs</h3>
@@ -50,8 +50,45 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/visa-services/tourist-visa-uae" className="hover:text-primary-400 transition-colors">
+                  Tourist Visa
+                </Link>
+              </li>
+              <li>
                 <Link href="/visa-services/visa-renewal-uae" className="hover:text-primary-400 transition-colors">
                   Visa Renewal
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Business Services */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Business Services</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/visa-services/company-formation-uae" className="hover:text-primary-400 transition-colors">
+                  Company Formation
+                </Link>
+              </li>
+              <li>
+                <Link href="/visa-services/pro-services-uae" className="hover:text-primary-400 transition-colors">
+                  PRO Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/visa-services/labour-immigration-uae" className="hover:text-primary-400 transition-colors">
+                  Labour & Immigration
+                </Link>
+              </li>
+              <li>
+                <Link href="/visa-services/document-attestation-uae" className="hover:text-primary-400 transition-colors">
+                  Document Attestation
+                </Link>
+              </li>
+              <li>
+                <Link href="/visa-services/medical-emirates-id-uae" className="hover:text-primary-400 transition-colors">
+                  Medical & Emirates ID
                 </Link>
               </li>
             </ul>

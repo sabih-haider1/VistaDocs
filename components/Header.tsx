@@ -21,7 +21,13 @@ const navigation: NavItem[] = [
       { label: 'Employment Visa', href: '/visa-services/employment-visa-uae', description: 'Work permits and residence visas' },
       { label: 'Family Visa', href: '/visa-services/family-visa-uae', description: 'Sponsor your family members' },
       { label: 'Golden Visa', href: '/visa-services/golden-visa-uae', description: 'Long-term residence permits' },
+      { label: 'Tourist Visa', href: '/visa-services/tourist-visa-uae', description: 'Short-term visit permits' },
       { label: 'Visa Renewal', href: '/visa-services/visa-renewal-uae', description: 'Extend your residence permit' },
+      { label: 'Document Attestation', href: '/visa-services/document-attestation-uae', description: 'Certificate legalization' },
+      { label: 'Company Formation', href: '/visa-services/company-formation-uae', description: 'Business setup in UAE' },
+      { label: 'PRO Services', href: '/visa-services/pro-services-uae', description: 'Government liaison services' },
+      { label: 'Labour & Immigration', href: '/visa-services/labour-immigration-uae', description: 'Labour cards and MOHRE' },
+      { label: 'Medical & Emirates ID', href: '/visa-services/medical-emirates-id-uae', description: 'Health screening and ID' },
     ],
   },
   {
