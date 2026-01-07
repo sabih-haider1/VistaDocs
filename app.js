@@ -7,6 +7,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const servicesData = require('./services-data');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -61,6 +62,36 @@ app.get('/services', (req, res) => {
   res.render('services', {
     title: 'Services - VistaDocs Center',
     currentPage: 'services'
+  });
+});
+
+/**
+ * Route: Individual Service Pages
+ * Dynamic service pages from services-data.js
+ */
+app.get('/services/:slug', (req, res) => {
+  const serviceSlug = req.params.slug;
+  const service = servicesData[serviceSlug];
+  
+  if (!service) {
+    return res.status(404).send('<h1>404 - Service Not Found</h1><p>The service you are looking for does not exist.</p>');
+  }
+  
+  res.render('service-page', {
+    title: service.title,
+    currentPage: 'services',
+    service: service
+  });
+});
+
+/**
+ * Route: FAQ Page
+ * Frequently asked questions
+ */
+app.get('/faq', (req, res) => {
+  res.render('faq', {
+    title: 'FAQ - VistaDocs Center',
+    currentPage: 'faq'
   });
 });
 
