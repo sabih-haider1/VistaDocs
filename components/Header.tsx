@@ -23,11 +23,17 @@ const navigation: NavItem[] = [
       { label: 'Golden Visa', href: '/visa-services/golden-visa-uae', description: 'Long-term residence permits' },
       { label: 'Tourist Visa', href: '/visa-services/tourist-visa-uae', description: 'Short-term visit permits' },
       { label: 'Visa Renewal', href: '/visa-services/visa-renewal-uae', description: 'Extend your residence permit' },
-      { label: 'Document Attestation', href: '/visa-services/document-attestation-uae', description: 'Certificate legalization' },
+      { label: 'Medical & Emirates ID', href: '/visa-services/medical-emirates-id-uae', description: 'Health screening and ID' },
+    ],
+  },
+  {
+    label: 'Business Services',
+    href: '/visa-services',
+    children: [
       { label: 'Company Formation', href: '/visa-services/company-formation-uae', description: 'Business setup in UAE' },
       { label: 'PRO Services', href: '/visa-services/pro-services-uae', description: 'Government liaison services' },
       { label: 'Labour & Immigration', href: '/visa-services/labour-immigration-uae', description: 'Labour cards and MOHRE' },
-      { label: 'Medical & Emirates ID', href: '/visa-services/medical-emirates-id-uae', description: 'Health screening and ID' },
+      { label: 'Document Attestation', href: '/visa-services/document-attestation-uae', description: 'Certificate legalization' },
     ],
   },
   {
@@ -114,7 +120,7 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden max-h-[70vh] overflow-y-auto"
                     >
                       {item.children.map((child) => (
                         <Link
@@ -166,7 +172,7 @@ export default function Header() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
             >
-              <div className="py-4 space-y-1">
+              <div className="py-4 space-y-1 max-h-[80vh] overflow-y-auto">
                 {navigation.map((item) => (
                   <div key={item.label}>
                     <Link
