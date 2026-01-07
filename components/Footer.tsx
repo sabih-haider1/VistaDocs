@@ -100,8 +100,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@vistadocs.ae" className="hover:text-primary-400 transition-colors">
-                  info@vistadocs.ae
+                <a href="mailto:vistadocscenter@gmail.com" className="hover:text-primary-400 transition-colors">
+                  vistadocscenter@gmail.com
                 </a>
               </li>
             </ul>
