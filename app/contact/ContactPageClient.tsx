@@ -71,8 +71,8 @@ export default function ContactPageClient() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:info@vistadocs.ae" className="text-primary-600 hover:text-primary-700">
-                      info@vistadocs.ae
+                    <a href="mailto:vistadocscenter@gmail.com" className="text-primary-600 hover:text-primary-700">
+                      vistadocscenter@gmail.com
                     </a>
                   </div>
                 </div>

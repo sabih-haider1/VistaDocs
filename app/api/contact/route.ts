@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         <p>${message}</p>
         <hr>
         <p>Best regards,<br>VistaDocs Center Team</p>
-        <p>Email: info@vistadocs.ae<br>Phone: +971 50 123 4567</p>
+        <p>Email: vistadocscenter@gmail.com<br>Phone: +971 50 123 4567</p>
       `,
     };
 
