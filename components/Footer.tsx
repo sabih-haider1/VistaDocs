@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,17 +15,11 @@ export default function Footer() {
               Your trusted partner for visa services and technical solutions in the UAE.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com/vistadocs" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61585036434214" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com/vistadocs" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://linkedin.com/company/vistadocs" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/vistadocs-center-b4988b3a0/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://instagram.com/vistadocs" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Instagram">
-                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
