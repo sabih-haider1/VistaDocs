@@ -3,8 +3,10 @@
  * Serves static pages using EJS templating
  */
 
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +21,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Parse URL-encoded bodies (for contact form)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Configure email transporter
+const transporter = nodemailer.createTransport({
+  service: process.env.EMAIL_SERVICE || 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
 
 /**
  * Route: Home Page
@@ -68,16 +79,51 @@ app.get('/contact', (req, res) => {
 /**
  * POST Route: Handle Contact Form Submission
  */
-app.post('/contact', (req, res) => {
-  // In a real application, you would process the form data here
-  // For now, we'll just acknowledge receipt
+app.post('/contact', async (req, res) => {
+  const { name, email, phone, service, message } = req.body;
+  
+  // Log form submission
   console.log('Contact form submitted:', req.body);
   
-  res.render('contact', {
-    title: 'Contact Us - VistaDocs Center',
-    currentPage: 'contact',
-    formSubmitted: true
-  });
+  // Prepare email options
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+    subject: `New Contact Form Submission from ${name}`,
+    html: `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Service Interested In:</strong> ${service || 'Not specified'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
+      <hr>
+      <p><em>Submitted on: ${new Date().toLocaleString()}</em></p>
+    `,
+    replyTo: email
+  };
+  
+  try {
+    // Send email
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+    
+    res.render('contact', {
+      title: 'Contact Us - VistaDocs Center',
+      currentPage: 'contact',
+      formSubmitted: true
+    });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    
+    // Still show success to user, but log the error
+    res.render('contact', {
+      title: 'Contact Us - VistaDocs Center',
+      currentPage: 'contact',
+      formSubmitted: true
+    });
+  }
 });
 
 // 404 Handler
