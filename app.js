@@ -8,6 +8,7 @@ const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const servicesData = require('./services-data');
+const technicalServicesData = require('./technical-services-data');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -97,6 +98,36 @@ app.get('/faq', (req, res) => {
   res.render('faq', {
     title: 'FAQ - VistaDocs Center',
     currentPage: 'faq'
+  });
+});
+
+/**
+ * Route: Technical Services Listing
+ * Overview of all technical services
+ */
+app.get('/technical', (req, res) => {
+  res.render('technical-services', {
+    title: 'Technical Services - VistaDocs Center',
+    currentPage: 'technical'
+  });
+});
+
+/**
+ * Route: Individual Technical Service Pages
+ * Dynamic technical service pages from technical-services-data.js
+ */
+app.get('/technical/:slug', (req, res) => {
+  const serviceSlug = req.params.slug;
+  const service = technicalServicesData[serviceSlug];
+  
+  if (!service) {
+    return res.status(404).send('<h1>404 - Service Not Found</h1><p>The technical service you are looking for does not exist.</p>');
+  }
+  
+  res.render('service-page', {
+    title: service.seo.title,
+    currentPage: 'technical',
+    service: service
   });
 });
 
