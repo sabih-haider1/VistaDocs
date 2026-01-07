@@ -18,6 +18,8 @@
 <body>
   <%- include('partials/header') %>
   
+  <%- include('partials/breadcrumbs') %>
+  
   <main>
   <article class="service-detail">
     
@@ -70,7 +72,7 @@
               <h3>Included Services</h3>
               <ul class="related-list">
                 <% service.linking.dependencies.forEach(function(depSlug) { %>
-                  <li><a href="/services/<%= depSlug %>"><%= depSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
+                  <li><a href="/services/<%= serviceCategory %>/<%= depSlug %>"><%= depSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
                 <% }); %>
               </ul>
             </div>
@@ -81,7 +83,7 @@
               <h3>Upgrade Options</h3>
               <ul class="related-list">
                 <% service.linking.upsells.forEach(function(upsellSlug) { %>
-                  <li><a href="/services/<%= upsellSlug %>"><%= upsellSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
+                  <li><a href="/services/<%= serviceCategory %>/<%= upsellSlug %>"><%= upsellSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
                 <% }); %>
               </ul>
             </div>
@@ -92,7 +94,18 @@
               <h3>Related Services</h3>
               <ul class="related-list">
                 <% service.linking.relatedGuides.forEach(function(guideSlug) { %>
-                  <li><a href="/services/<%= guideSlug %>"><%= guideSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
+                  <li><a href="/services/<%= serviceCategory %>/<%= guideSlug %>"><%= guideSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
+                <% }); %>
+              </ul>
+            </div>
+            <% } %>
+
+            <% if (service.linking.integrations && service.linking.integrations.length > 0) { %>
+            <div class="sidebar-card">
+              <h3>Integration Services</h3>
+              <ul class="related-list">
+                <% service.linking.integrations.forEach(function(intSlug) { %>
+                  <li><a href="/services/<%= serviceCategory %>/<%= intSlug %>"><%= intSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a></li>
                 <% }); %>
               </ul>
             </div>

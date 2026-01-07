@@ -9,6 +9,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const servicesData = require('./services-data');
 const technicalServicesData = require('./technical-services-data');
+const { navigationStructure, breadcrumbGenerator, routeValidator } = require('./navigation-config');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -56,38 +57,62 @@ app.get('/about', (req, res) => {
 });
 
 /**
- * Route: Services Page
- * Grid of all available services
+ * Route: Visa Services Overview
+ * Grid of all available visa services
  */
-app.get('/services', (req, res) => {
-  res.render('services', {
-    title: 'Services - VistaDocs Center',
-    currentPage: 'services'
+app.get('/services/visa', (req, res) => {
+  res.render('visa-services', {
+    title: 'Visa Services - VistaDocs Center',
+    currentPage: 'visa',
+    breadcrumbs: breadcrumbGenerator.generate('visa')
   });
 });
 
 /**
- * Route: Individual Service Pages
+ * Legacy route redirect
+ */
+app.get('/services', (req, res) => {
+  res.redirect(301, '/services/visa');
+});
+
+/**
+ * Route: Individual Visa Service Pages
  * Dynamic service pages from services-data.js
  */
-app.get('/services/:slug', (req, res) => {
+app.get('/services/visa/:slug', (req, res) => {
   const serviceSlug = req.params.slug;
-  const service = servicesData[serviceSlug];
   
-  if (!service) {
-    return res.status(404).send('<h1>404 - Service Not Found</h1><p>The service you are looking for does not exist.</p>');
+  // Validate service exists and is indexable
+  if (!routeValidator.isValidVisaService(serviceSlug)) {
+    return res.status(404).send('<h1>404 - Service Not Found</h1><p>The visa service you are looking for does not exist.</p>');
   }
+  
+  const service = servicesData[serviceSlug];
 
   // Handle merged/deprecated services with 301 redirects
-  if (service.meta.lifecycleStatus === 'merged' && service.meta.redirectTo) {
-    return res.redirect(301, `/services/${service.meta.redirectTo}`);
+  const redirectTarget = routeValidator.shouldRedirect(serviceSlug, 'visa');
+  if (redirectTarget) {
+    return res.redirect(301, `/services/visa/${redirectTarget}`);
   }
   
   res.render('service-page', {
     title: service.seo.title,
-    currentPage: 'services',
-    service: service
+    currentPage: 'visa',
+    serviceCategory: 'visa',
+    service: service,
+    breadcrumbs: breadcrumbGenerator.generate('visa', serviceSlug, 'visa')
   });
+});
+
+/**
+ * Legacy route redirect for old visa service URLs
+ */
+app.get('/services/:slug', (req, res) => {
+  const serviceSlug = req.params.slug;
+  if (routeValidator.isValidVisaService(serviceSlug)) {
+    return res.redirect(301, `/services/visa/${serviceSlug}`);
+  }
+  res.status(404).send('<h1>404 - Service Not Found</h1>');
 });
 
 /**
@@ -105,10 +130,11 @@ app.get('/faq', (req, res) => {
  * Route: Technical Services Listing
  * Overview of all technical services
  */
-app.get('/technical', (req, res) => {
+app.get('/services/technical', (req, res) => {
   res.render('technical-services', {
     title: 'Technical Services - VistaDocs Center',
-    currentPage: 'technical'
+    currentPage: 'technical',
+    breadcrumbs: breadcrumbGenerator.generate('technical')
   });
 });
 
@@ -116,19 +142,38 @@ app.get('/technical', (req, res) => {
  * Route: Individual Technical Service Pages
  * Dynamic technical service pages from technical-services-data.js
  */
-app.get('/technical/:slug', (req, res) => {
+app.get('/services/technical/:slug', (req, res) => {
   const serviceSlug = req.params.slug;
-  const service = technicalServicesData[serviceSlug];
   
-  if (!service) {
+  // Validate service exists
+  if (!routeValidator.isValidTechnicalService(serviceSlug)) {
     return res.status(404).send('<h1>404 - Service Not Found</h1><p>The technical service you are looking for does not exist.</p>');
   }
+  
+  const service = technicalServicesData[serviceSlug];
   
   res.render('service-page', {
     title: service.seo.title,
     currentPage: 'technical',
-    service: service
+    serviceCategory: 'technical',
+    service: service,
+    breadcrumbs: breadcrumbGenerator.generate('technical', serviceSlug, 'technical')
   });
+});
+
+/**
+ * Legacy route redirect for old technical service URLs
+ */
+app.get('/technical/:slug', (req, res) => {
+  const serviceSlug = req.params.slug;
+  if (routeValidator.isValidTechnicalService(serviceSlug)) {
+    return res.redirect(301, `/services/technical/${serviceSlug}`);
+  }
+  res.status(404).send('<h1>404 - Service Not Found</h1>');
+});
+
+app.get('/technical', (req, res) => {
+  res.redirect(301, '/services/technical');
 });
 
 /**
