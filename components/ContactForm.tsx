@@ -154,7 +154,7 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
               errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
-            placeholder="+971 50 123 4567"
+            placeholder="+971 50 735 4640"
           />
           {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
         </div>

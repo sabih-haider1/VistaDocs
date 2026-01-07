@@ -59,8 +59,8 @@ export default function ContactPageClient() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <a href="tel:+971501234567" className="text-primary-600 hover:text-primary-700">
-                      +971 50 123 4567
+                    <a href="tel:+971507354640" className="text-primary-600 hover:text-primary-700">
+                      +971 50 735 4640
                     </a>
                   </div>
                 </div>

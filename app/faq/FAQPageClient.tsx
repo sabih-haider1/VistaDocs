@@ -76,7 +76,7 @@ export default function FAQPageClient() {
     },
     {
       question: 'How do I get started with your services?',
-      answer: 'Simply contact us through our website, email (vistadocscenter@gmail.com), or phone (0507354640). We\'ll schedule a free consultation to understand your requirements, provide a detailed quote, and outline the next steps.',
+      answer: 'Simply contact us through our website, email (vistadocscenter@gmail.com), or phone (+971 50 735 4640). We\'ll schedule a free consultation to understand your requirements, provide a detailed quote, and outline the next steps.',
     },
     {
       question: 'What makes VistaDocs different from competitors?',

@@ -6,8 +6,8 @@ import { MessageCircle, X } from 'lucide-react';
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = '+971501234567'; // WhatsApp format (no spaces or special chars)
-  const displayNumber = '+971 50 123 4567';
+  const phoneNumber = '+971507354640'; // WhatsApp format (no spaces or special chars)
+  const displayNumber = '+971 50 735 4640';
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (
