@@ -72,7 +72,7 @@ export default function HeroSection({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
             {title}
           </motion.h1>
@@ -82,7 +82,7 @@ export default function HeroSection({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
+              className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed"
             >
               {description}
             </motion.p>
@@ -96,14 +96,14 @@ export default function HeroSection({
           >
             <Link
               href={ctaHref}
-              className="px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-xl hover:shadow-2xl"
+              className="w-full sm:w-auto px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 active:scale-95 transition-all shadow-xl hover:shadow-2xl text-center"
             >
               {ctaText}
             </Link>
             {secondaryCtaText && secondaryCtaHref && (
               <Link
                 href={secondaryCtaHref}
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 active:bg-white/20 transition-colors text-center"
               >
                 {secondaryCtaText}
               </Link>

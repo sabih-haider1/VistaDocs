@@ -74,7 +74,7 @@ export default function ServicePageClient({ service, category }: ServicePageClie
                 transition={{ delay: index * 0.1 }}
                 className="mb-12 last:mb-0"
               >
-                <div className={`rounded-2xl p-8 border-2 shadow-lg ${
+                <div className={`rounded-2xl p-6 sm:p-8 border-2 shadow-lg ${
                   index % 2 === 0 
                     ? 'bg-gradient-to-br from-white to-gray-50 border-gray-200' 
                     : 'bg-gradient-to-br from-primary-50/30 to-white border-primary-100'
@@ -93,7 +93,7 @@ export default function ServicePageClient({ service, category }: ServicePageClie
                         <AlertCircle className="w-6 h-6 text-primary-600" />
                       )}
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-1">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-1">
                       {section.heading}
                     </h2>
                   </div>

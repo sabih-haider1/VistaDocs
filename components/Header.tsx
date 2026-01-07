@@ -156,10 +156,10 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-primary-600"
+            className="lg:hidden p-3 text-gray-700 hover:text-primary-600 active:bg-gray-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 
@@ -177,18 +177,18 @@ export default function Header() {
                   <div key={item.label}>
                     <Link
                       href={item.href}
-                      className="block px-4 py-3 text-gray-700 hover:bg-primary-50 font-medium"
+                      className="block px-4 py-4 text-base text-gray-700 hover:bg-primary-50 font-medium active:bg-primary-100 transition-colors"
                       onClick={() => !item.children && setMobileMenuOpen(false)}
                     >
                       {item.label}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 space-y-1">
+                      <div className="pl-4 space-y-1 bg-gray-50/50">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary-50"
+                            className="block px-4 py-3 text-sm text-gray-600 hover:bg-primary-50 active:bg-primary-100 transition-colors"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {child.label}
@@ -198,10 +198,10 @@ export default function Header() {
                     )}
                   </div>
                 ))}
-                <div className="px-4 pt-4">
+                <div className="px-4 pt-4 pb-2">
                   <Link
                     href="/contact"
-                    className="block w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-center rounded-lg font-medium"
+                    className="block w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-center rounded-lg font-medium shadow-lg active:scale-95 transition-transform"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Get Started
