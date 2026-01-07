@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= service.metaDescription %>">
+  <title><%= service.title %></title>
+  <link rel="icon" type="image/png" href="/img/identity.png">
+  <link rel="apple-touch-icon" href="/img/identity.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <%- include('partials/header') %>
+  
+  <main>
+  <article class="service-detail">
+    
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title"><%= service.h1 %></h1>
+      </div>
+    </section>
+
+    <section class="service-content">
+      <div class="container">
+        <div class="service-layout">
+          
+          <div class="service-main">
+            
+            <div class="content-block">
+              <h2><%= service.sections.what.title %></h2>
+              <p><%= service.sections.what.content %></p>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.who.title %></h2>
+              <p><%= service.sections.who.content %></p>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.documents.title %></h2>
+              <ul class="document-list">
+                <% service.sections.documents.items.forEach(function(item) { %>
+                  <li><%= item %></li>
+                <% }); %>
+              </ul>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.process.title %></h2>
+              <ol class="process-list">
+                <% service.sections.process.items.forEach(function(item) { %>
+                  <li><%= item %></li>
+                <% }); %>
+              </ol>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.timeline.title %></h2>
+              <p><%= service.sections.timeline.content %></p>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.rejection.title %></h2>
+              <ul class="rejection-list">
+                <% service.sections.rejection.items.forEach(function(item) { %>
+                  <li><%= item %></li>
+                <% }); %>
+              </ul>
+            </div>
+
+            <div class="content-block">
+              <h2><%= service.sections.why.title %></h2>
+              <p><%= service.sections.why.content %></p>
+            </div>
+
+            <% if (service.relatedServices && service.relatedServices.length > 0) { %>
+            <div class="content-block related-services">
+              <h2>Related Services</h2>
+              <div class="related-services-grid">
+                <% service.relatedServices.forEach(function(relatedSlug) { %>
+                  <a href="/services/<%= relatedSlug %>" class="related-service-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    <span><%= relatedSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) %></span>
+                  </a>
+                <% }); %>
+              </div>
+            </div>
+            <% } %>
+
+            <% if (service.faqs && service.faqs.length > 0) { %>
+            <div class="content-block faqs">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list">
+                <% service.faqs.forEach(function(faq, index) { %>
+                  <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name"><%= faq.question %></h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                      <p itemprop="text"><%= faq.answer %></p>
+                    </div>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+            <% } %>
+
+          </div>
+
+          <aside class="service-sidebar">
+            <div class="sidebar-card cta-card">
+              <h3>Need Assistance?</h3>
+              <p>Contact our team for consultation and support with your application.</p>
+              <a href="/contact" class="btn btn-primary btn-block">Contact Us</a>
+            </div>
+
+            <div class="sidebar-card info-card">
+              <h3>Processing Time</h3>
+              <p><%= service.sections.timeline.content %></p>
+            </div>
+
+            <div class="sidebar-card info-card">
+              <h3>Quick Contact</h3>
+              <div class="contact-info-compact">
+                <p><strong>Email:</strong><br>vistadocscenter@gmail.com</p>
+                <p><strong>Phone:</strong><br>0507354640</p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </article>
+  </main>
+  
+  <%- include('partials/footer') %>
+</body>
+</html>

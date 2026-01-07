@@ -76,9 +76,14 @@ app.get('/services/:slug', (req, res) => {
   if (!service) {
     return res.status(404).send('<h1>404 - Service Not Found</h1><p>The service you are looking for does not exist.</p>');
   }
+
+  // Handle merged/deprecated services with 301 redirects
+  if (service.meta.lifecycleStatus === 'merged' && service.meta.redirectTo) {
+    return res.redirect(301, `/services/${service.meta.redirectTo}`);
+  }
   
   res.render('service-page', {
-    title: service.title,
+    title: service.seo.title,
     currentPage: 'services',
     service: service
   });
