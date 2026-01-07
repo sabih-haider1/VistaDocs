@@ -10,7 +10,7 @@ export default function FAQPageClient() {
   const visaFAQs = [
     {
       question: 'How long does visa processing take?',
-      answer: 'Processing times vary by visa type. Employment visas typically take 7-14 working days, family visas 7-14 days, golden visas 2-3 months, and visa renewals 3-5 working days. These timelines assume all documents are complete and correct.',
+      answer: 'Processing times vary by visa type. Employment visas typically take 7-14 working days, family visas 7-14 days, golden visas 14-30 days, tourist visas 3-5 days, and visa renewals 5-10 working days. These timelines assume all documents are complete and correct.',
     },
     {
       question: 'What documents do I need for an employment visa?',
@@ -22,15 +22,23 @@ export default function FAQPageClient() {
     },
     {
       question: 'What is a Golden Visa and who qualifies?',
-      answer: 'The Golden Visa is a long-term residence permit (5 or 10 years) for investors, entrepreneurs, specialized talents, researchers, and outstanding students. Qualification criteria include: investors with property worth AED 2M+, entrepreneurs with projects worth AED 500K+, or specialized professionals in science, medicine, engineering, etc.',
+      answer: 'The Golden Visa is a long-term residence permit (5 or 10 years) for investors, entrepreneurs, specialized talents, researchers, and outstanding students. Qualification criteria include: investors with property worth AED 2M+, business investment of AED 2M+, or specialized professionals in science, medicine, engineering, etc.',
     },
     {
-      question: 'Do you offer refunds if my visa application is rejected?',
-      answer: 'Government fees are non-refundable in case of rejection. Our service fees may be partially refundable depending on the stage of processing when the rejection occurs. We work diligently to ensure all applications are complete and accurate to minimize rejection risks.',
+      question: 'Do you handle document attestation for employment visas?',
+      answer: 'Yes, we provide complete document attestation services including educational certificates, marriage certificates, birth certificates, and commercial documents. We handle the entire process from notary attestation to MOFA attestation in UAE, typically completed in 15-25 working days.',
     },
     {
-      question: 'Can you help with visa cancellation and change?',
-      answer: 'Yes, we assist with visa cancellations, status changes, and transfers. We handle all documentation and coordinate with immigration authorities to ensure smooth transitions.',
+      question: 'Can you help with tourist visa extensions?',
+      answer: 'Yes, we process tourist visa extensions from inside UAE. 30-day visas can be extended once for 30 days, and 90-day visas can be extended twice (30 days each). Extensions must be applied before visa expiry and typically take 2-3 days.',
+    },
+    {
+      question: 'What is the medical fitness test and when is it required?',
+      answer: 'Medical fitness test is a mandatory health screening for all residence visa applicants, including tests for tuberculosis, HIV, Hepatitis B & C. It\'s required for employment visas, family visas, visa renewals, and golden visas. Results are available in 24-48 hours.',
+    },
+    {
+      question: 'How long does Emirates ID processing take?',
+      answer: 'Emirates ID processing typically takes 7-10 working days from biometric enrollment. You must apply within 60 days of entry to avoid fines. The card is valid for the same duration as your residence visa.',
     },
   ];
 
@@ -68,15 +76,27 @@ export default function FAQPageClient() {
     },
     {
       question: 'How do I get started with your services?',
-      answer: 'Simply contact us through our website, email, or phone. We\'ll schedule a free consultation to understand your requirements, provide a detailed quote, and outline the next steps.',
+      answer: 'Simply contact us through our website, email (vistadocscenter@gmail.com), or phone (0507354640). We\'ll schedule a free consultation to understand your requirements, provide a detailed quote, and outline the next steps.',
     },
     {
       question: 'What makes VistaDocs different from competitors?',
-      answer: 'We specialize in serving SMBs and SMEs with personalized attention, competitive pricing, and modern solutions. Our unique combination of visa services and technical expertise allows us to support your complete business needs under one roof.',
+      answer: 'We offer a unique combination of visa services and technical solutions under one roof. Our personalized attention, competitive pricing, and comprehensive service coverage (visa processing, PRO services, company formation, document attestation, and web development) make us a complete business partner for SMBs and SMEs.',
     },
     {
-      question: 'Do you have physical offices I can visit?',
-      answer: 'Yes, we have offices in Dubai. Please contact us to schedule an appointment so we can ensure the right team member is available to assist you.',
+      question: 'Do you provide PRO services for businesses?',
+      answer: 'Yes, we offer comprehensive PRO services including trade license renewals, visa processing, labour card management, municipality approvals, and government liaison services. We offer both pay-as-you-go and monthly retainer packages.',
+    },
+    {
+      question: 'Can you help with company formation in UAE?',
+      answer: 'Absolutely! We handle mainland company formation, free zone setup (DMCC, JAFZA, etc.), offshore company formation, and branch office establishment. Our services include trade license processing, MOA drafting, visa quota allocation, and bank account opening support.',
+    },
+    {
+      question: 'Do you handle labour and MOHRE services?',
+      answer: 'Yes, we provide complete labour and immigration services including labour card processing, work permits, employment contract registration, WPS setup and compliance, quota management, and absconding case resolution.',
+    },
+    {
+      question: 'What is your success rate for visa applications?',
+      answer: 'We maintain a 95%+ success rate for visa applications. Our experienced team ensures all applications are thoroughly reviewed and complete before submission, minimizing rejection risks. We also provide guidance on eligibility before you commit.',
     },
   ];
 

@@ -6,13 +6,19 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CTABlock from '@/components/CTABlock';
 import HeroSection from '@/components/HeroSection';
 import { visaServicesData } from '@/data/visa-services';
-import { Briefcase, Users, Award, RefreshCw } from 'lucide-react';
+import { Briefcase, Users, Award, RefreshCw, Plane, FileCheck, Building2, Briefcase as BriefcaseIcon, Scale, HeartPulse } from 'lucide-react';
 
 const serviceIcons: Record<string, any> = {
   'employment-visa-uae': Briefcase,
   'family-visa-uae': Users,
   'golden-visa-uae': Award,
   'visa-renewal-uae': RefreshCw,
+  'tourist-visa-uae': Plane,
+  'document-attestation-uae': FileCheck,
+  'company-formation-uae': Building2,
+  'pro-services-uae': BriefcaseIcon,
+  'labour-immigration-uae': Scale,
+  'medical-emirates-id-uae': HeartPulse,
 };
 
 export default function VisaServicesPageClient() {
@@ -24,9 +30,9 @@ export default function VisaServicesPageClient() {
   return (
     <>
       <HeroSection
-        subtitle="Visa Solutions"
-        title="Complete Visa Processing Services in UAE"
-        description="Professional visa processing for employment, family sponsorship, golden visas, and renewals. Fast, reliable, and hassle-free service."
+        subtitle="Visa & Document Solutions"
+        title="Complete Visa & Business Services in UAE"
+        description="Professional visa processing, document attestation, company formation, and PRO services. Fast, reliable, and hassle-free service across all Emirates."
         ctaText="View All Services"
         ctaHref="#services"
         secondaryCtaText="Contact Us"
@@ -37,14 +43,14 @@ export default function VisaServicesPageClient() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Visa Services
+              Our Visa & Document Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive visa solutions tailored to your needs
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From visa processing to company formation, we handle all your UAE documentation needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {services.map((service, index) => (
               <motion.div
                 key={service.slug}

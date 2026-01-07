@@ -88,10 +88,10 @@ export default function Home() {
           {/* Visa Services */}
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-              Visa Services
+              Visa & Document Services
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Complete visa processing solutions for individuals and businesses in the UAE.
+              Complete visa processing, document attestation, and business setup solutions in UAE.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <ServiceCard
@@ -113,9 +113,33 @@ export default function Home() {
                 category="visa"
               />
               <ServiceCard
-                title="Visa Renewal"
-                description="Extend your UAE residence permit. Medical fitness, Emirates ID renewal, and visa stamping."
-                href="/visa-services/visa-renewal-uae"
+                title="Tourist Visa"
+                description="30-day and 90-day tourist visas for UAE. Fast processing with express options available."
+                href="/visa-services/tourist-visa-uae"
+                category="visa"
+              />
+              <ServiceCard
+                title="Document Attestation"
+                description="Certificate legalization and attestation services. Educational, commercial, and personal documents."
+                href="/visa-services/document-attestation-uae"
+                category="visa"
+              />
+              <ServiceCard
+                title="Company Formation"
+                description="Business setup in UAE. Mainland, free zone, and offshore company registration with trade licenses."
+                href="/visa-services/company-formation-uae"
+                category="visa"
+              />
+              <ServiceCard
+                title="PRO Services"
+                description="Government liaison and document processing. License renewals, visa processing, and compliance."
+                href="/visa-services/pro-services-uae"
+                category="visa"
+              />
+              <ServiceCard
+                title="Labour & Immigration"
+                description="Labour cards, work permits, MOHRE services, and WPS compliance for UAE businesses."
+                href="/visa-services/labour-immigration-uae"
                 category="visa"
               />
             </div>
