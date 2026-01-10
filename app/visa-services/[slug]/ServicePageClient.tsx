@@ -102,9 +102,9 @@ export default function ServicePageClient({ service, category }: ServicePageClie
                       prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mb-4
                       prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-primary-700
                       prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-h4:text-gray-800
-                      prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-p:text-lg
+                      prose-p:text-gray-900 prose-p:leading-relaxed prose-p:mb-4 prose-p:text-lg
                       prose-ul:my-4 prose-ul:space-y-2
-                      prose-li:text-gray-700 prose-li:text-lg prose-li:leading-relaxed
+                      prose-li:text-gray-900 prose-li:text-lg prose-li:leading-relaxed
                       prose-li:pl-2 prose-li:relative prose-li:before:absolute prose-li:before:left-0
                       prose-li:before:text-primary-500 prose-li:before:font-bold
                       prose-strong:text-gray-900 prose-strong:font-semibold
@@ -112,7 +112,7 @@ export default function ServicePageClient({ service, category }: ServicePageClie
                       [&_ul]:list-none [&_ul]:pl-6
                       [&_ul_li]:before:content-['✓'] [&_ul_li]:before:-left-6
                       [&_ol]:pl-6 [&_ol]:space-y-2
-                      [&_ol_li]:text-gray-700 [&_ol_li]:text-lg [&_ol_li]:leading-relaxed"
+                      [&_ol_li]:text-gray-900 [&_ol_li]:text-lg [&_ol_li]:leading-relaxed"
                     dangerouslySetInnerHTML={parseHTML(section.content)}
                   />
                 </div>
