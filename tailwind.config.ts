@@ -34,9 +34,27 @@ const config: Config = {
           900: '#581c87',
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#111827', // gray-900
+            p: {
+              color: '#111827', // gray-900
+            },
+            li: {
+              color: '#111827', // gray-900
+            },
+            strong: {
+              color: '#111827', // gray-900
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
 
 export default config;

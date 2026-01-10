@@ -98,21 +98,7 @@ export default function ServicePageClient({ service, category }: ServicePageClie
                     </h2>
                   </div>
                   <div
-                    className="prose prose-lg max-w-none 
-                      prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mb-4
-                      prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-secondary-700
-                      prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-h4:text-gray-800
-                      prose-p:!text-gray-900 prose-p:leading-relaxed prose-p:mb-4 prose-p:text-lg
-                      prose-ul:my-4 prose-ul:space-y-2
-                      prose-li:!text-gray-900 prose-li:text-lg prose-li:leading-relaxed
-                      prose-li:pl-2 prose-li:relative prose-li:before:absolute prose-li:before:left-0
-                      prose-li:before:text-secondary-500 prose-li:before:font-bold
-                      prose-strong:text-gray-900 prose-strong:font-semibold
-                      prose-a:text-secondary-600 prose-a:font-medium prose-a:no-underline hover:prose-a:text-secondary-700 hover:prose-a:underline
-                      [&_ul]:list-none [&_ul]:pl-6
-                      [&_ul_li]:before:content-['✓'] [&_ul_li]:before:-left-6
-                      [&_ol]:pl-6 [&_ol]:space-y-2
-                      [&_ol_li]:!text-gray-900 [&_ol_li]:text-lg [&_ol_li]:leading-relaxed"
+                    className="prose prose-lg max-w-none prose-h3:text-secondary-700 prose-li:before:text-secondary-500 prose-a:text-secondary-600 hover:prose-a:text-secondary-700 [&_ul]:list-none [&_ul]:pl-6 [&_ul_li]:before:content-['✓'] [&_ul_li]:before:mr-2 [&_ul_li]:before:font-bold"
                     dangerouslySetInnerHTML={parseHTML(section.content)}
                   />
                 </div>
