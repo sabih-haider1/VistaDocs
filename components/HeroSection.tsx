@@ -26,7 +26,7 @@ export default function HeroSection({
   backgroundGradient = 'from-primary-500 to-secondary-500',
 }: HeroSectionProps) {
   return (
-    <section className={`relative overflow-hidden bg-gradient-to-br ${backgroundGradient} pt-32 pb-20`}>
+    <section className={`relative overflow-hidden bg-gradient-to-br ${backgroundGradient} pt-32 pb-20 lg:pt-40 lg:pb-32`}>
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
