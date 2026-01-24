@@ -15,7 +15,7 @@ export default function Footer() {
               Your trusted partner for visa services and technical solutions in the UAE.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/profile.php?id=61585036434214" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Facebook">
+              <a href="https://web.facebook.com/profile.php?id=61586774744438" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="https://www.linkedin.com/in/vistadocs-center-b4988b3a0/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="LinkedIn">
