@@ -118,6 +118,33 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Resources */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/blog" className="hover:text-primary-400 transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-primary-400 transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-primary-400 transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-primary-400 transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h4 className="text-white font-semibold mb-4">Contact Us</h4>
@@ -148,6 +175,9 @@ export default function Footer() {
           <div className="flex justify-center gap-6 mt-4 md:mt-0">
             <Link href="/about" className="hover:text-primary-400 transition-colors">
               About Us
+            </Link>
+            <Link href="/blog" className="hover:text-primary-400 transition-colors">
+              Blog
             </Link>
             <Link href="/contact" className="hover:text-primary-400 transition-colors">
               Contact
