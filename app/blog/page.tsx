@@ -52,9 +52,10 @@ export const revalidate = 3600; // Revalidate every hour
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
-  const page = parseInt(searchParams.page || '1');
+  const { page: pageParam } = await searchParams;
+  const page = parseInt(pageParam || '1');
   const { posts, total, totalPages } = await getBlogPosts(page);
 
   return (
