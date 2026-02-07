@@ -1,0 +1,8 @@
+# Modern browsers only (portfolio context)
+# Targets browsers from ~2024-2025 that support ES2022+ natively
+# Removes legacy JavaScript polyfills (~14 KB savings)
+
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions

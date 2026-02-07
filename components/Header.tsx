@@ -86,8 +86,9 @@ export default function Header() {
               <Image 
                 src="/logo.png" 
                 alt="VistaDocs" 
-                width={280} 
-                height={60}
+                width={230} 
+                height={98}
+                sizes="(max-width: 640px) 131px, 230px"
                 className="h-14 w-auto object-contain rounded-lg"
                 priority
                 style={{ maxWidth: 'none' }}

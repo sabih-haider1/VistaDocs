@@ -1,0 +1,22 @@
+{
+  "slug": "next-js-isr-mongodb-guide",
+  "title": "Next.js ISR with MongoDB: Complete Implementation Guide",
+  "metaDescription": "Learn how to implement ISR (Incremental Static Regeneration) with MongoDB in Next.js 15. Includes connection pooling, caching, and error handling.",
+  "h1": "How to Implement ISR with MongoDB in Next.js 15",
+  "publishedAt": { "$date": "2026-02-08T10:00:00.000Z" },
+  "category": "technical",
+  "tags": ["next.js", "mongodb", "isr", "performance", "serverless"],
+  "content": "<h2>Why ISR + MongoDB?</h2><p>Incremental Static Regeneration (ISR) allows you to create and update static pages after build time. Combined with MongoDB, you get the best of both worlds: dynamic content with static performance.</p><h2>The Problem</h2><p>Traditional SSR (Server-Side Rendering) queries the database on every request. This works for small traffic, but at scale:</p><ul><li>Increased database load</li><li>Slower response times</li><li>Higher costs</li></ul><p>ISR solves this by caching pages and revalidating them periodically.</p><h2>Implementation</h2><pre><code>// Example implementation here</code></pre>",
+  "excerpt": "A comprehensive guide to implementing Incremental Static Regeneration with MongoDB in Next.js 15. Learn connection pooling, caching strategies, and error handling.",
+  "author": {
+    "name": "Sabih Haider",
+    "role": "Founder, VistaDocs",
+    "bio": "Full-stack developer with 5+ years building scalable web applications. Specializes in Next.js, MongoDB, and serverless architectures."
+  },
+  "seo": {
+    "noindex": false,
+    "relatedServices": ["web-development", "custom-software-development"]
+  },
+  "featured": true,
+  "readTime": 12
+}

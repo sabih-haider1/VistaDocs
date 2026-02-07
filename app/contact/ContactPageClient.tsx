@@ -11,7 +11,7 @@ export default function ContactPageClient() {
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-500 to-secondary-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: 'Contact Us' }]} />
+          <Breadcrumbs items={[{ name: 'Contact Us', url: '/contact' }]} />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

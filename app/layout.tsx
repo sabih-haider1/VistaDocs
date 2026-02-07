@@ -24,6 +24,18 @@ export const metadata: Metadata = {
     shortcut: '/site_identity.png',
     apple: '/site_identity.png',
   },
+  metadataBase: new URL('https://vistadocs.ae'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_AE',
+    url: 'https://vistadocs.ae',
+    siteName: 'VistaDocs Center',
+    title: 'VistaDocs Center - Visa & Technical Services in UAE',
+    description: 'Professional visa processing and technical services in Dubai, UAE.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
@@ -31,8 +43,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Organization structured data
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'VistaDocs Center',
+    description: 'Professional visa processing and technical services in Dubai, UAE',
+    url: 'https://vistadocs.ae',
+    logo: 'https://vistadocs.ae/site_identity.png',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'United Arab Emirates',
+    },
+  };
+
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning

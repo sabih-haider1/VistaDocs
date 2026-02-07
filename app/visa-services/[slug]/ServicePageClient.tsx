@@ -19,8 +19,8 @@ export default function ServicePageClient({ service, category }: ServicePageClie
   };
 
   const breadcrumbItems = [
-    { label: category === 'visa' ? 'Visa Services' : 'Technical Services', href: `/${category}-services` },
-    { label: service.seo.h1 },
+    { name: category === 'visa' ? 'Visa Services' : 'Technical Services', url: `/${category}-services` },
+    { name: service.seo.h1, url: `/${category}-services/${service.slug}` },
   ];
 
   // Sample FAQs - in production, these should come from the service data
