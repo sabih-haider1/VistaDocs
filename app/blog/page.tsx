@@ -58,7 +58,7 @@ export default async function BlogPage({
   const { posts, total, totalPages } = await getBlogPosts(page);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-12">
