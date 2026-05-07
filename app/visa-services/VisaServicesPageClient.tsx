@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import ServiceCard from '@/components/ServiceCard';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import CTABlock from '@/components/CTABlock';
 import HeroSection from '@/components/HeroSection';
 import { visaServicesData } from '@/data/visa-services';
+import type { LucideIcon } from 'lucide-react';
 import { Briefcase, Users, Award, RefreshCw, Plane, FileCheck, Building2, Briefcase as BriefcaseIcon, Scale, HeartPulse } from 'lucide-react';
 
-const serviceIcons: Record<string, any> = {
+const serviceIcons: Record<string, LucideIcon> = {
   'employment-visa-uae': Briefcase,
   'family-visa-uae': Users,
   'golden-visa-uae': Award,

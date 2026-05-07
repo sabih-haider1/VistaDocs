@@ -19,9 +19,10 @@ export default function CTABlock({
   buttonHref = '/contact',
   variant = 'primary',
 }: CTABlockProps) {
-  const gradientClass = variant === 'primary'
-    ? 'from-primary-500 to-secondary-500'
-    : 'from-secondary-500 to-primary-500';
+  const gradient =
+    variant === 'primary'
+      ? 'linear-gradient(90deg, rgba(15,118,110,0.95), rgba(3,105,161,0.95))'
+      : 'linear-gradient(90deg, rgba(3,105,161,0.95), rgba(15,118,110,0.95))';
 
   return (
     <motion.section
@@ -31,14 +32,14 @@ export default function CTABlock({
       className="py-16"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`bg-gradient-to-br ${gradientClass} rounded-2xl shadow-2xl overflow-hidden`}>
-          <div className="px-8 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 text-center">
+        <div className={`rounded-2xl overflow-hidden`}>
+          <div className="card text-center" style={{ background: gradient }}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4"
             >
               {title}
             </motion.h2>
@@ -48,7 +49,7 @@ export default function CTABlock({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
+              className="text-base text-white/90 mb-6 max-w-2xl mx-auto"
             >
               {description}
             </motion.p>
@@ -63,10 +64,10 @@ export default function CTABlock({
             >
               <Link
                 href={buttonHref}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-xl"
+                className="btn btn-ghost"
               >
                 {buttonText}
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>

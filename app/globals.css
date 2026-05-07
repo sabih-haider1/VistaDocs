@@ -4,30 +4,44 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
-    }
+    /* Design tokens - unified premium system */
+    --bg: #f7fafc; /* page background */
+    --surface: #ffffff; /* surfaces / cards */
+    --muted-surface: #f3f4f6; /* subtle surfaces */
+    --brand-primary: #0f766e; /* teal/dark - primary */
+    --brand-accent: #0369a1; /* accent / CTA */
+    --brand-strong: #0b7285;
+    --text-900: #0f172a;
+    --text-700: #334155;
+    --muted-text: #6b7280;
+    --border: rgba(15,23,42,0.06);
+    --radius-lg: 12px;
+    --shadow-soft: 0 10px 30px rgba(15,23,42,0.06);
+    --shadow-strong: 0 20px 60px rgba(15,23,42,0.08);
   }
 
   body {
-    color: var(--foreground);
-    background: var(--background);
+    color: var(--text-900);
+    background: var(--bg);
+    font-family: var(--font-geist-sans), system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-space-grotesk), var(--font-geist-sans), system-ui, sans-serif;
+  }
+
   *:focus-visible {
-    outline: 2px solid #0ea5e9;
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline: 3px solid rgba(3,105,161,0.12);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 }
 
@@ -44,6 +58,19 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .brand-surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius-lg);
+  }
+
+  .brand-badge {
+    background: linear-gradient(135deg, rgba(3,105,161,0.06), rgba(2,132,119,0.06));
+    border: 1px solid rgba(3,105,161,0.08);
+    color: var(--text-900);
   }
 }
 
@@ -66,6 +93,52 @@
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* Shared component tokens */
+@layer components {
+  .container-xl {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+    color: #fff;
+    box-shadow: var(--shadow-strong);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-900);
+    border: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+  }
+
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 

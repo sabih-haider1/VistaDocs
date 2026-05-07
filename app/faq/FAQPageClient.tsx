@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import HeroSection from '@/components/HeroSection';
 import FAQSection from '@/components/FAQSection';
 import CTABlock from '@/components/CTABlock';
 import { HelpCircle, FileText, Clock, DollarSign, Users, Code } from 'lucide-react';
@@ -123,78 +123,44 @@ export default function FAQPageClient() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary-500 to-secondary-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ name: 'FAQ', url: '/faq' }]} />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl">
-              Find answers to common questions about our visa services, technical solutions, and processes.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSection
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about our visa services, technical solutions, and processes."
+        ctaText="Contact Us"
+        ctaHref="/contact"
+      />
 
       {/* Quick Stats */}
-      <section className="py-12 bg-white border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Clock className="w-6 h-6 text-primary-600" />
+      <section className="py-8">
+        <div className="container-xl">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center card">
+              <div className="w-10 h-10 bg-[var(--muted-surface)] rounded-full flex items-center justify-center mx-auto mb-2">
+                <Clock className="w-5 h-5 text-[var(--brand-accent)]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">7-14 Days</div>
-              <div className="text-sm text-gray-600">Avg. Processing Time</div>
+              <div className="text-lg font-semibold text-[var(--text-900)]">7-14 Days</div>
+              <div className="text-sm text-[var(--text-700)]">Avg. Processing Time</div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Users className="w-6 h-6 text-secondary-600" />
+            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center card">
+              <div className="w-10 h-10 bg-[var(--muted-surface)] rounded-full flex items-center justify-center mx-auto mb-2">
+                <Users className="w-5 h-5 text-[var(--brand-accent)]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">500+</div>
-              <div className="text-sm text-gray-600">Clients Served</div>
+              <div className="text-lg font-semibold text-[var(--text-900)]">500+</div>
+              <div className="text-sm text-[var(--text-700)]">Clients Served</div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <FileText className="w-6 h-6 text-purple-600" />
+            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center card">
+              <div className="w-10 h-10 bg-[var(--muted-surface)] rounded-full flex items-center justify-center mx-auto mb-2">
+                <FileText className="w-5 h-5 text-[var(--brand-accent)]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">95%+</div>
-              <div className="text-sm text-gray-600">Success Rate</div>
+              <div className="text-lg font-semibold text-[var(--text-900)]">95%+</div>
+              <div className="text-sm text-[var(--text-700)]">Success Rate</div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <DollarSign className="w-6 h-6 text-green-600" />
+            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center card">
+              <div className="w-10 h-10 bg-[var(--muted-surface)] rounded-full flex items-center justify-center mx-auto mb-2">
+                <DollarSign className="w-5 h-5 text-[var(--brand-accent)]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">Competitive</div>
-              <div className="text-sm text-gray-600">Pricing</div>
+              <div className="text-lg font-semibold text-[var(--text-900)]">Competitive</div>
+              <div className="text-sm text-[var(--text-700)]">Pricing</div>
             </motion.div>
           </div>
         </div>
@@ -202,22 +168,14 @@ export default function FAQPageClient() {
 
       {/* FAQ Categories */}
       {categories.map((category, index) => (
-        <section
-          key={category.title}
-          className={`py-16 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}
-        >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-${category.color}-500 to-${category.color}-600 flex items-center justify-center`}>
-                  <category.icon className="w-6 h-6 text-white" />
+        <section key={category.title} className={`py-12 ${index % 2 === 0 ? '' : ''}`}>
+          <div className="container-xl">
+            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto">
+              <div className="flex items-center gap-3 mb-6">
+                <div className={`w-10 h-10 rounded-lg bg-[var(--muted-surface)] flex items-center justify-center`}>
+                  <category.icon className="w-5 h-5 text-[var(--brand-accent)]" />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">{category.title}</h2>
+                <h2 className="text-2xl font-semibold text-[var(--text-900)]">{category.title}</h2>
               </div>
               <FAQSection faqs={category.faqs} />
             </motion.div>
@@ -226,22 +184,12 @@ export default function FAQPageClient() {
       ))}
 
       {/* Still Have Questions */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto"
-          >
-            <HelpCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Still Have Questions?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Can't find the answer you're looking for? Our team is here to help. 
-              Contact us and we'll get back to you as soon as possible.
-            </p>
+      <section className="section">
+        <div className="container-xl text-center">
+          <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto">
+            <HelpCircle className="w-12 h-12 text-[var(--brand-accent)] mx-auto mb-3" />
+            <h2 className="text-2xl font-semibold text-[var(--text-900)] mb-3">Still Have Questions?</h2>
+            <p className="text-[var(--text-700)] mb-6">Can&apos;t find the answer you&apos;re looking for? Our team is here to help. Contact us and we&apos;ll get back to you as soon as possible.</p>
           </motion.div>
         </div>
       </section>

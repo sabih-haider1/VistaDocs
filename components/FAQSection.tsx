@@ -22,41 +22,41 @@ export default function FAQSection({ faqs, title = 'Frequently Asked Questions' 
   };
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section">
+      <div className="container-xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-[var(--text-900)]">
             {title}
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                transition={{ delay: index * 0.06 }}
+                className="card"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-[var(--muted-surface)] transition-colors rounded-md"
                   aria-expanded={activeIndex === index}
                 >
-                  <span className="font-semibold text-gray-900 pr-8">
+                  <span className="font-medium text-[var(--text-900)] pr-4">
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.22 }}
                   >
-                    <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-[var(--muted-text)] flex-shrink-0" />
                   </motion.div>
                 </button>
 
@@ -66,12 +66,10 @@ export default function FAQSection({ faqs, title = 'Frequently Asked Questions' 
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
+                      transition={{ duration: 0.22 }}
+                      className="overflow-hidden px-4 pb-3 text-[var(--text-700)]"
                     >
-                      <div className="px-6 pb-4 text-gray-600">
-                        {faq.answer}
-                      </div>
+                      {faq.answer}
                     </motion.div>
                   )}
                 </AnimatePresence>

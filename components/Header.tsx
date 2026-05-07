@@ -4,7 +4,48 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, BriefcaseBusiness, Sparkles } from 'lucide-react';
+
+const servicesNavigation = [
+  {
+    label: 'Visa Services',
+    href: '/visa-services',
+    children: [
+      { label: 'Employment Visa Dubai', href: '/visa-services/employment-visa-uae', description: 'Work permits and residence visas' },
+      { label: 'UAE Golden Visa', href: '/visa-services/golden-visa-uae', description: 'Long-term residence permits' },
+      { label: 'Family Visa UAE', href: '/visa-services/family-visa-uae', description: 'Sponsor your family members' },
+      { label: 'Tourist Visa UAE', href: '/visa-services/tourist-visa-uae', description: 'Short-term visit permits' },
+    ],
+  },
+  {
+    label: 'Business Setup',
+    href: '/visa-services/company-formation-uae',
+    children: [
+      { label: 'Company Formation Dubai', href: '/visa-services/company-formation-uae', description: 'Launch a compliant UAE company' },
+      { label: 'Mainland Company Setup', href: '/visa-services/mainland-company-setup', description: 'Operate across the UAE market' },
+      { label: 'Free Zone Business Setup', href: '/visa-services/free-zone-business-setup', description: '100% foreign ownership routes' },
+      { label: 'Offshore Company Setup', href: '/visa-services/offshore-company-setup', description: 'International holding structures' },
+    ],
+  },
+  {
+    label: 'Operations',
+    href: '/visa-services/pro-services-uae',
+    children: [
+      { label: 'PRO Services Dubai', href: '/visa-services/pro-services-uae', description: 'Government liaison and compliance' },
+      { label: 'Document Attestation UAE', href: '/visa-services/document-attestation-uae', description: 'Certificate legalization support' },
+      { label: 'Emirates ID Services', href: '/visa-services/medical-emirates-id-uae', description: 'Medical and biometric coordination' },
+    ],
+  },
+  {
+    label: 'Digital Systems',
+    href: '/technical-services',
+    children: [
+      { label: 'POS Systems UAE', href: '/technical-services/pos-system-setup', description: 'Retail and F&B POS implementation' },
+      { label: 'CRM Solutions UAE', href: '/technical-services/suitecrm-customization', description: 'Lead management and automation' },
+      { label: 'WordPress Development UAE', href: '/technical-services/wordpress-development', description: 'Corporate sites and lead funnels' },
+    ],
+  },
+];
 
 interface NavItem {
   label: string;
@@ -14,38 +55,9 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { label: 'Home', href: '/' },
-  {
-    label: 'Visa Services',
-    href: '/visa-services',
-    children: [
-      { label: 'Employment Visa', href: '/visa-services/employment-visa-uae', description: 'Work permits and residence visas' },
-      { label: 'Family Visa', href: '/visa-services/family-visa-uae', description: 'Sponsor your family members' },
-      { label: 'Golden Visa', href: '/visa-services/golden-visa-uae', description: 'Long-term residence permits' },
-      { label: 'Tourist Visa', href: '/visa-services/tourist-visa-uae', description: 'Short-term visit permits' },
-      { label: 'Visa Renewal', href: '/visa-services/visa-renewal-uae', description: 'Extend your residence permit' },
-      { label: 'Medical & Emirates ID', href: '/visa-services/medical-emirates-id-uae', description: 'Health screening and ID' },
-    ],
-  },
-  {
-    label: 'Business Services',
-    href: '/visa-services',
-    children: [
-      { label: 'Company Formation', href: '/visa-services/company-formation-uae', description: 'Business setup in UAE' },
-      { label: 'PRO Services', href: '/visa-services/pro-services-uae', description: 'Government liaison services' },
-      { label: 'Labour & Immigration', href: '/visa-services/labour-immigration-uae', description: 'Labour cards and MOHRE' },
-      { label: 'Document Attestation', href: '/visa-services/document-attestation-uae', description: 'Certificate legalization' },
-    ],
-  },
-  {
-    label: 'Technical Services',
-    href: '/technical-services',
-    children: [
-      { label: 'POS System Setup', href: '/technical-services/pos-system-setup', description: 'Point of sale solutions' },
-      { label: 'WordPress Development', href: '/technical-services/wordpress-development', description: 'Custom websites and themes' },
-      { label: 'Web Applications', href: '/technical-services/custom-web-application', description: 'Bespoke software solutions' },
-      { label: 'CRM Customization', href: '/technical-services/suitecrm-customization', description: 'SuiteCRM implementation' },
-    ],
-  },
+  { label: 'Services', href: '/services', children: servicesNavigation.flatMap((group) => group.children || []) },
+  { label: 'Visa Services', href: '/visa-services', children: servicesNavigation[0].children },
+  { label: 'Digital Systems', href: '/technical-services', children: servicesNavigation[3].children },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
@@ -71,12 +83,13 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? 'backdrop-blur-md shadow-sm border-b'
+          : 'backdrop-blur-sm'
       }`}
+      style={{ background: 'rgba(255,255,255,0.9)', borderColor: 'var(--border)' }}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <motion.div
@@ -98,7 +111,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -108,7 +121,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="px-4 py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors flex items-center gap-1"
+                  className="px-4 py-2 text-[var(--text-700)] hover:text-[var(--text-900)] font-medium transition-colors flex items-center gap-1 text-sm"
                 >
                   {item.label}
                   {item.children && <ChevronDown className="w-4 h-4" />}
@@ -118,24 +131,26 @@ export default function Header() {
                 <AnimatePresence>
                   {item.children && activeDropdown === item.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden max-h-[70vh] overflow-y-auto"
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.16 }}
+                      className="absolute top-full left-0 mt-2 w-80 overflow-hidden max-h-[70vh] overflow-y-auto"
                     >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-4 py-3 hover:bg-primary-50 transition-colors border-b border-gray-100 last:border-0"
-                        >
-                          <div className="font-medium text-gray-900">{child.label}</div>
-                          {child.description && (
-                            <div className="text-sm text-gray-500 mt-1">{child.description}</div>
-                          )}
-                        </Link>
-                      ))}
+                      <div className="card">
+                        <div className="space-y-2">
+                          {item.children.map((child, idx) => (
+                            <Link
+                              key={`${child.href}-${idx}`}
+                              href={child.href}
+                              className="block px-3 py-3 hover:bg-[var(--muted-surface)] transition-colors rounded-md"
+                            >
+                              <div className="font-medium text-[var(--text-900)] text-sm">{child.label}</div>
+                              {child.description && <div className="text-sm text-[var(--muted-text)] mt-1">{child.description}</div>}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -145,12 +160,14 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
-                className="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow"
+                className="btn btn-primary text-sm px-4 py-2 inline-flex items-center gap-2"
+                aria-label="Book consultation"
               >
-                Get Started
+                <BriefcaseBusiness className="w-4 h-4" />
+                Book Consultation
               </Link>
             </motion.div>
           </div>
@@ -158,7 +175,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-3 text-gray-700 hover:text-primary-600 active:bg-gray-100 rounded-lg transition-colors"
+            className="lg:hidden p-3 text-slate-700 hover:text-slate-950 active:bg-slate-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -172,25 +189,25 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
+              className="lg:hidden overflow-hidden bg-white border-t border-slate-100"
             >
               <div className="py-4 space-y-1 max-h-[80vh] overflow-y-auto">
                 {navigation.map((item) => (
                   <div key={item.label}>
                     <Link
                       href={item.href}
-                      className="block px-4 py-4 text-base text-gray-700 hover:bg-primary-50 font-medium active:bg-primary-100 transition-colors"
+                        className="block px-4 py-4 text-base text-[var(--text-700)] hover:bg-[var(--muted-surface)] font-medium active:bg-[var(--muted-surface)] transition-colors"
                       onClick={() => !item.children && setMobileMenuOpen(false)}
                     >
                       {item.label}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 space-y-1 bg-gray-50/50">
+                      <div className="pl-4 space-y-1 bg-slate-50/60">
                         {item.children.map((child) => (
                           <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block px-4 py-3 text-sm text-gray-600 hover:bg-primary-50 active:bg-primary-100 transition-colors"
+                              key={child.href}
+                              href={child.href}
+                              className="block px-4 py-3 text-sm text-[var(--text-700)] hover:bg-[var(--muted-surface)] active:bg-[var(--muted-surface)] transition-colors rounded-md"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {child.label}
@@ -203,10 +220,11 @@ export default function Header() {
                 <div className="px-4 pt-4 pb-2">
                   <Link
                     href="/contact"
-                    className="block w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-center rounded-lg font-medium shadow-lg active:scale-95 transition-transform"
+                    className="block w-full px-6 py-4 bg-slate-950 text-white text-center rounded-full font-medium shadow-lg active:scale-95 transition-transform inline-flex items-center justify-center gap-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Get Started
+                    <Sparkles className="w-4 h-4" />
+                    Book Consultation
                   </Link>
                 </div>
               </div>

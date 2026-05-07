@@ -1,172 +1,121 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 
+const serviceGroups = [
+  {
+    title: 'Visa Services',
+    links: [
+      { label: 'Employment Visa Dubai', href: '/visa-services/employment-visa-uae' },
+      { label: 'UAE Golden Visa', href: '/visa-services/golden-visa-uae' },
+      { label: 'Family Visa UAE', href: '/visa-services/family-visa-uae' },
+      { label: 'Tourist Visa UAE', href: '/visa-services/tourist-visa-uae' },
+    ],
+  },
+  {
+    title: 'Business Operations',
+    links: [
+      { label: 'Company Formation Dubai', href: '/visa-services/company-formation-uae' },
+      { label: 'PRO Services Dubai', href: '/visa-services/pro-services-uae' },
+      { label: 'Document Attestation UAE', href: '/visa-services/document-attestation-uae' },
+      { label: 'Emirates ID Services', href: '/visa-services/medical-emirates-id-uae' },
+    ],
+  },
+  {
+    title: 'Digital Systems',
+    links: [
+      { label: 'POS Systems UAE', href: '/technical-services/pos-system-setup' },
+      { label: 'CRM Solutions UAE', href: '/technical-services/suitecrm-customization' },
+      { label: 'WordPress Development UAE', href: '/technical-services/wordpress-development' },
+      { label: 'Custom Web Applications', href: '/technical-services/custom-web-application' },
+    ],
+  },
+];
+
+const locationLinks = [
+  { label: 'Dubai', href: '/locations/dubai' },
+  { label: 'Abu Dhabi', href: '/locations/abu-dhabi' },
+  { label: 'Sharjah', href: '/locations/sharjah' },
+  { label: 'Ajman', href: '/locations/ajman' },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info */}
+    <footer className="py-8" style={{ background: 'transparent' }}>
+      <div className="container-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           <div>
-            <h3 className="text-white text-xl font-bold mb-4 gradient-text">VistaDocs</h3>
-            <p className="text-sm mb-4">
-              Your trusted partner for visa services and technical solutions in the UAE.
+            <h3 className="text-[var(--text-900)] text-lg font-bold mb-2 font-display">VistaDocs Center</h3>
+            <p className="text-sm mb-4 text-[var(--muted-text)] leading-6">
+              Your UAE business launch and growth partner for visas, company setup, PRO operations, attestation, and digital systems.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://web.facebook.com/profile.php?id=61586774744438" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Facebook">
+            <div className="flex space-x-3">
+              <a href="https://web.facebook.com/profile.php?id=61586774744438" target="_blank" rel="noopener noreferrer" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/vistadocs-center-b4988b3a0/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/vistadocs-center-b4988b3a0/" target="_blank" rel="noopener noreferrer" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com/vistadocs" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors" aria-label="Instagram">
+              <a href="https://instagram.com/vistadocs" target="_blank" rel="noopener noreferrer" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Visa Services */}
+          {serviceGroups.map((group) => (
+            <div key={group.title}>
+              <h4 className="text-[var(--text-900)] font-semibold mb-2 text-sm">{group.title}</h4>
+              <ul className="space-y-2 text-sm">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors inline-flex items-center gap-2">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
           <div>
-            <h4 className="text-white font-semibold mb-4">Visa Services</h4>
+            <h4 className="text-[var(--text-900)] font-semibold mb-2 text-sm">Locations</h4>
+            <ul className="space-y-2 text-sm mb-4">
+              {locationLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="text-[var(--text-900)] font-semibold mb-2 text-sm">Resources</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/visa-services/employment-visa-uae" className="hover:text-primary-400 transition-colors">
-                  Employment Visa
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/family-visa-uae" className="hover:text-primary-400 transition-colors">
-                  Family Visa
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/golden-visa-uae" className="hover:text-primary-400 transition-colors">
-                  Golden Visa
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/tourist-visa-uae" className="hover:text-primary-400 transition-colors">
-                  Tourist Visa
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/visa-renewal-uae" className="hover:text-primary-400 transition-colors">
-                  Visa Renewal
-                </Link>
-              </li>
+              <li><Link href="/services" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">Services</Link></li>
+              <li><Link href="/blog" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">Blog</Link></li>
+              <li><Link href="/faq" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">FAQ</Link></li>
+              <li><Link href="/about" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">About</Link></li>
+              <li><Link href="/contact" className="text-[var(--muted-text)] hover:text-[var(--text-900)] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Business Services */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Business Services</h4>
+            <h4 className="text-[var(--text-900)] font-semibold mb-2 text-sm">Contact Us</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/visa-services/company-formation-uae" className="hover:text-primary-400 transition-colors">
-                  Company Formation
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/pro-services-uae" className="hover:text-primary-400 transition-colors">
-                  PRO Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/labour-immigration-uae" className="hover:text-primary-400 transition-colors">
-                  Labour & Immigration
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/document-attestation-uae" className="hover:text-primary-400 transition-colors">
-                  Document Attestation
-                </Link>
-              </li>
-              <li>
-                <Link href="/visa-services/medical-emirates-id-uae" className="hover:text-primary-400 transition-colors">
-                  Medical & Emirates ID
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Technical Services */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Technical Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/technical-services/pos-system-setup" className="hover:text-primary-400 transition-colors">
-                  POS System Setup
-                </Link>
-              </li>
-              <li>
-                <Link href="/technical-services/wordpress-development" className="hover:text-primary-400 transition-colors">
-                  WordPress Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/technical-services/custom-web-application" className="hover:text-primary-400 transition-colors">
-                  Web Applications
-                </Link>
-              </li>
-              <li>
-                <Link href="/technical-services/suitecrm-customization" className="hover:text-primary-400 transition-colors">
-                  CRM Customization
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/blog" className="hover:text-primary-400 transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-primary-400 transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-primary-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/sitemap.xml" className="hover:text-primary-400 transition-colors">
-                  Sitemap
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2">
-                <MapPin className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
+              <li className="flex items-start gap-2 text-[var(--muted-text)]">
+                <MapPin className="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0 mt-0.5" />
                 <span>Dubai, United Arab Emirates</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="tel:+971507354640" className="hover:text-primary-400 transition-colors">
+              <li className="flex items-center gap-2 text-[var(--muted-text)]">
+                <Phone className="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0" />
+                <a href="tel:+971507354640" className="hover:text-[var(--text-900)] transition-colors">
                   +971 50 735 4640
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="mailto:vistadocscenter@gmail.com" className="hover:text-primary-400 transition-colors">
+              <li className="flex items-center gap-2 text-[var(--muted-text)]">
+                <Mail className="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0" />
+                <a href="mailto:vistadocscenter@gmail.com" className="hover:text-[var(--text-900)] transition-colors">
                   vistadocscenter@gmail.com
                 </a>
               </li>
@@ -174,19 +123,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center md:flex md:justify-between md:items-center">
+        <div className="border-t mt-8 pt-6 text-sm text-[var(--muted-text)] flex flex-col md:flex-row md:justify-between md:items-center gap-4">
           <p>&copy; {currentYear} VistaDocs Center. All rights reserved.</p>
-          <div className="flex justify-center gap-6 mt-4 md:mt-0">
-            <Link href="/about" className="hover:text-primary-400 transition-colors">
-              About Us
-            </Link>
-            <Link href="/blog" className="hover:text-primary-400 transition-colors">
-              Blog
-            </Link>
-            <Link href="/contact" className="hover:text-primary-400 transition-colors">
-              Contact
-            </Link>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/about" className="hover:text-[var(--text-900)] transition-colors">About</Link>
+            <Link href="/services" className="hover:text-[var(--text-900)] transition-colors">Services</Link>
+            <Link href="/blog" className="hover:text-[var(--text-900)] transition-colors">Blog</Link>
+            <Link href="/contact" className="hover:text-[var(--text-900)] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

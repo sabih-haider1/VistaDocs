@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import AboutPageClient from './AboutPageClient';
 
 export const metadata: Metadata = {
-  title: 'About Us - VistaDocs Center',
-  description: 'Learn about VistaDocs Center - your trusted partner for visa services and technical solutions in Dubai, UAE.',
+  title: 'About VistaDocs Center | UAE Business Launch & Growth Partner',
+  description: 'Learn how VistaDocs Center supports UAE business launch, residency, operations, and digital systems.',
 };
 
 export default function AboutPage() {

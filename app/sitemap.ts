@@ -3,6 +3,12 @@ import { connectToDatabase } from '@/lib/mongodb';
 
 export const revalidate = 86400; // Revalidate daily
 
+interface SitemapBlogPost {
+  slug: string;
+  updatedAt?: Date;
+  publishedAt?: Date;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://vistadocscenter.com';
   
@@ -21,10 +27,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/technical-services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/locations`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/about`,
@@ -70,6 +88,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const locationPages: MetadataRoute.Sitemap = ['dubai', 'abu-dhabi', 'sharjah', 'ajman'].map((slug) => ({
+    url: `${baseUrl}/locations/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   // Blog posts from MongoDB
   let blogPages: MetadataRoute.Sitemap = [];
   
@@ -81,7 +106,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .project({ slug: 1, updatedAt: 1, publishedAt: 1 })
       .toArray();
 
-    blogPages = posts.map((post: any) => ({
+    blogPages = (posts as SitemapBlogPost[]).map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: post.updatedAt || post.publishedAt,
       changeFrequency: 'monthly' as const,
@@ -94,6 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticPages,
+    ...locationPages,
     ...visaServicePages,
     ...technicalServicePages,
     ...blogPages,

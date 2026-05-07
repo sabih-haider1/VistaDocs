@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
               </div>
               <div className="flex-1 pr-6 sm:pr-0">
                 <h3 className="font-bold text-gray-900 mb-1 text-sm sm:text-base">Chat with us on WhatsApp</h3>
-                <p className="text-gray-600 text-xs sm:text-sm mb-3">We're here to help you!</p>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3">We&apos;re here to help you!</p>
                 <a
                   href={whatsappUrl}
                   target="_blank"

@@ -5,9 +5,10 @@ import ServiceCard from '@/components/ServiceCard';
 import CTABlock from '@/components/CTABlock';
 import HeroSection from '@/components/HeroSection';
 import { technicalServicesData } from '@/data/technical-services';
+import type { LucideIcon } from 'lucide-react';
 import { ShoppingCart, Globe, Monitor, Settings } from 'lucide-react';
 
-const serviceIcons: Record<string, any> = {
+const serviceIcons: Record<string, LucideIcon> = {
   'pos-system-setup': ShoppingCart,
   'wordpress-development': Globe,
   'custom-web-application': Monitor,
@@ -30,7 +31,6 @@ export default function TechnicalServicesPageClient() {
         ctaHref="#services"
         secondaryCtaText="Contact Us"
         secondaryCtaHref="/contact"
-        backgroundGradient="from-secondary-500 to-primary-500"
       />
 
       <section id="services" className="py-20 bg-white">

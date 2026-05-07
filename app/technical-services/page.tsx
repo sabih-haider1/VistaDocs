@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import TechnicalServicesPageClient from './TechnicalServicesPageClient';
 
 export const metadata: Metadata = {
-  title: 'Technical Services Dubai - Web Development & Business Solutions',
-  description: 'Professional technical services in UAE. WordPress development, custom web applications, POS systems, and CRM solutions for SMBs.',
-  keywords: ['web development dubai', 'wordpress dubai', 'pos system uae', 'crm customization'],
+  title: 'Digital Systems UAE | POS, CRM & WordPress Development | VistaDocs Center',
+  description: 'Professional digital systems for UAE businesses. POS setup, CRM customization, WordPress development, and web applications.',
+  keywords: ['web development dubai', 'wordpress development uae', 'pos systems uae', 'crm solutions uae'],
 };
 
 export default function TechnicalServicesPage() {

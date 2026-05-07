@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import FAQPageClient from './FAQPageClient';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions - VistaDocs Center',
-  description: 'Find answers to common questions about visa services, technical solutions, and our processes at VistaDocs Center.',
-  keywords: ['faq', 'visa questions', 'technical services help', 'dubai visa faq'],
+  title: 'FAQ | VistaDocs Center',
+  description: 'Answers to common questions about UAE visa services, company formation, PRO support, and digital systems.',
+  keywords: ['faq', 'visa questions', 'company formation faq', 'pro services faq', 'uae business services'],
 };
 
 export default function FAQPage() {

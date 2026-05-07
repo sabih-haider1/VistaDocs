@@ -91,14 +91,14 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
 
   return (
     <motion.form
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit}
-      className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8"
+      className="max-w-2xl mx-auto card"
     >
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+      <h2 className="text-xl font-semibold text-[var(--text-900)] mb-4">Get in Touch</h2>
 
-      <div className="space-y-5">
+      <div className="space-y-4">
         {/* Name */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -111,8 +111,8 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-              errors.name ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] transition-all ${
+              errors.name ? 'border-red-500' : 'border:var(--border)'
             }`}
             placeholder="John Doe"
           />
@@ -131,8 +131,8 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] transition-all ${
+              errors.email ? 'border-red-500' : 'border:var(--border)'
             }`}
             placeholder="john@example.com"
           />
@@ -151,8 +151,8 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-              errors.phone ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] transition-all ${
+              errors.phone ? 'border-red-500' : 'border:var(--border)'
             }`}
             placeholder="+971 50 735 4640"
           />
@@ -169,7 +169,7 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] transition-all"
           >
             <option value="">Select a service</option>
             {serviceType !== 'technical' && (
@@ -203,8 +203,8 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none ${
-              errors.message ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] transition-all resize-none ${
+              errors.message ? 'border-red-500' : 'border:var(--border)'
             }`}
             placeholder="Tell us about your requirements..."
           />
@@ -217,7 +217,7 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
           whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg font-semibold hover:shadow-xl transition-shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full btn btn-primary disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <>
@@ -234,20 +234,12 @@ export default function ContactForm({ serviceType = 'general', onSubmit }: Conta
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
-          >
-            Thank you! We'll get back to you soon.
-          </motion.div>
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="p-3 bg-green-50 border border-green-200 rounded-md text-green-800">
+              Thank you! We&apos;ll get back to you soon.
+            </motion.div>
         )}
         {submitStatus === 'error' && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800"
-          >
+          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="p-3 bg-red-50 border border-red-200 rounded-md text-red-800">
             Something went wrong. Please try again.
           </motion.div>
         )}

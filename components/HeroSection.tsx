@@ -12,7 +12,6 @@ interface HeroSectionProps {
   ctaHref?: string;
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
-  backgroundGradient?: string;
 }
 
 export default function HeroSection({
@@ -23,10 +22,9 @@ export default function HeroSection({
   ctaHref = '/contact',
   secondaryCtaText,
   secondaryCtaHref,
-  backgroundGradient = 'from-primary-500 to-secondary-500',
 }: HeroSectionProps) {
   return (
-    <section className={`relative overflow-hidden bg-gradient-to-br ${backgroundGradient} pt-32 pb-20 lg:pt-40 lg:pb-32`}>
+    <section className={`relative overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24`} style={{ background: 'linear-gradient(180deg, rgba(15,118,110,0.95), rgba(3,105,161,0.92))' }}>
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -55,8 +53,8 @@ export default function HeroSection({
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container-xl relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
           {subtitle && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -68,11 +66,11 @@ export default function HeroSection({
             </motion.div>
           )}
 
-          <motion.h1
+            <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-4 leading-tight"
           >
             {title}
           </motion.h1>
@@ -88,7 +86,7 @@ export default function HeroSection({
             </motion.p>
           )}
 
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -96,14 +94,14 @@ export default function HeroSection({
           >
             <Link
               href={ctaHref}
-              className="w-full sm:w-auto px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 active:scale-95 transition-all shadow-xl hover:shadow-2xl text-center"
+              className="btn btn-primary"
             >
               {ctaText}
             </Link>
             {secondaryCtaText && secondaryCtaHref && (
               <Link
                 href={secondaryCtaHref}
-                className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 active:bg-white/20 transition-colors text-center"
+                className="btn btn-ghost"
               >
                 {secondaryCtaText}
               </Link>

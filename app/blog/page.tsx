@@ -2,14 +2,15 @@ import { Metadata } from 'next';
 import { connectToDatabase } from '@/lib/mongodb';
 import { BlogIndexPost } from '@/types/blog';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Blog | VistaDocs Center - Technical Insights & Visa Guides',
-  description: 'In-depth guides on UAE visa processing, Next.js development, and technical implementation strategies from our team.',
+  title: 'Blog | VistaDocs Center',
+  description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',
   openGraph: {
-    title: 'VistaDocs Blog - Technical Insights & Visa Guides',
-    description: 'In-depth guides on UAE visa processing, Next.js development, and technical implementation strategies.',
-    url: 'https://vistadocs.ae/blog',
+    title: 'VistaDocs Blog | UAE Business Guides',
+    description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',
+    url: 'https://vistadocscenter.com/blog',
     type: 'website',
   },
 };
@@ -56,19 +57,15 @@ export default async function BlogPage({
 }) {
   const { page: pageParam } = await searchParams;
   const page = parseInt(pageParam || '1');
-  const { posts, total, totalPages } = await getBlogPosts(page);
+  const { posts, totalPages } = await getBlogPosts(page);
 
   return (
-    <div className="min-h-screen bg-white pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="pt-24">
+      <div className="container-xl py-12">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Blog
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            Technical insights, implementation guides, and regulatory updates from our team.
-          </p>
+        <div className="mb-8">
+          <h1 className="text-2xl font-semibold text-[var(--text-900)] mb-2">Blog</h1>
+          <p className="text-[var(--text-700)] max-w-3xl">Technical insights, implementation guides, and regulatory updates from our team.</p>
         </div>
 
         {/* Posts Grid */}
@@ -78,18 +75,21 @@ export default async function BlogPage({
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {posts.map((post) => (
                 <article
                   key={post.slug}
-                  className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                  className="card overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   {post.coverImage && (
-                    <div className="aspect-video bg-gray-100">
-                      <img
+                    <div className="aspect-video bg-gray-100 relative">
+                      <Image
                         src={post.coverImage}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        unoptimized
                       />
                     </div>
                   )}
@@ -106,7 +106,7 @@ export default async function BlogPage({
                     <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="hover:text-blue-600 transition-colors"
+                        className="hover:text-[var(--brand-accent)] transition-colors"
                       >
                         {post.title}
                       </Link>
@@ -124,7 +124,7 @@ export default async function BlogPage({
                       </span>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="text-blue-600 hover:text-blue-700 font-medium"
+                        className="text-[var(--brand-accent)] hover:text-[var(--brand-strong)] font-medium"
                       >
                         Read more →
                       </Link>

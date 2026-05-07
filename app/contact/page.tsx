@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import ContactPageClient from './ContactPageClient';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - VistaDocs Center',
-  description: 'Get in touch with VistaDocs for visa services and technical solutions in Dubai, UAE. Free consultation available.',
+  title: 'Contact VistaDocs Center | UAE Business Services',
+  description: 'Contact VistaDocs Center for UAE visa services, company formation, PRO support, and digital systems.',
 };
 
 export default function ContactPage() {

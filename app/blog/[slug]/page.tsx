@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { connectToDatabase } from '@/lib/mongodb';
 import { BlogPost } from '@/types/blog';
 import Link from 'next/link';
+import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 async function getPost(slug: string): Promise<BlogPost | null> {
@@ -19,8 +20,13 @@ async function getRelatedServices(serviceSlugs: string[]) {
   // Import service data dynamically
   const { visaServicesData } = await import('@/data/visa-services');
   const { technicalServicesData } = await import('@/data/technical-services');
+  type RelatedService = {
+    slug: string;
+    title: string;
+    category: 'visa-services' | 'technical-services';
+  };
   
-  const services = serviceSlugs.map((slug) => {
+  const services = serviceSlugs.map((slug): RelatedService | null => {
     // Check visa services first
     if (visaServicesData[slug]) {
       return {
@@ -67,7 +73,7 @@ export async function generateMetadata({
       publishedTime: new Date(post.publishedAt).toISOString(),
       modifiedTime: post.updatedAt ? new Date(post.updatedAt).toISOString() : undefined,
       authors: [post.author.name],
-      url: `https://vistadocs.ae/blog/${post.slug}`,
+      url: `https://vistadocscenter.com/blog/${post.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -117,7 +123,7 @@ export default async function BlogPostPage({
       name: 'VistaDocs Center',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://vistadocs.ae/site_identity.png',
+          url: 'https://vistadocscenter.com/site_identity.png',
       },
     },
   };
@@ -180,10 +186,13 @@ export default async function BlogPostPage({
             {/* Cover Image */}
             {post.coverImage && (
               <div className="mb-8 rounded-lg overflow-hidden">
-                <img
+                <Image
                   src={post.coverImage}
                   alt={post.title}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
+                  unoptimized
                 />
               </div>
             )}
@@ -223,7 +232,7 @@ export default async function BlogPostPage({
                   Related Services
                 </h2>
                 <div className="space-y-3">
-                  {relatedServices.map((service: any) => (
+                  {relatedServices.map((service) => (
                     <Link
                       key={service.slug}
                       href={`/${service.category}/${service.slug}`}

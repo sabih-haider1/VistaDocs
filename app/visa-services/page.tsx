@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import VisaServicesPageClient from './VisaServicesPageClient';
 
 export const metadata: Metadata = {
-  title: 'Visa & Document Services Dubai UAE - VistaDocs Center',
-  description: 'Complete visa processing, document attestation, company formation, and PRO services in UAE. Employment visas, golden visas, tourist visas, and business setup solutions.',
-  keywords: ['visa services uae', 'dubai visa', 'employment visa', 'family visa', 'golden visa', 'tourist visa', 'document attestation', 'company formation uae', 'pro services dubai'],
+  title: 'Visa & Business Services Dubai UAE | VistaDocs Center',
+  description: 'Complete UAE visa, company formation, document attestation, and PRO services for entrepreneurs, investors, and SMEs.',
+  keywords: ['visa services uae', 'dubai visa', 'employment visa dubai', 'family visa uae', 'golden visa uae', 'document attestation uae', 'company formation dubai', 'pro services dubai'],
 };
 
 export default function VisaServicesPage() {

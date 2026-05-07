@@ -1,37 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const geistSans = Geist({
+const manrope = Manrope({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "VistaDocs Center - Visa & Technical Services in UAE",
-  description: "Professional visa processing and technical services in Dubai, UAE. Employment visas, family visas, web development, and business solutions.",
-  keywords: ["visa services uae", "dubai visa", "web development dubai", "technical services uae"],
+  title: "VistaDocs Center | UAE Business Launch & Growth Partner",
+  description: "Premium UAE business services for visas, company formation, PRO work, attestation, Emirates ID, POS, CRM, and WordPress development.",
+  keywords: ["uae business services", "dubai visa services", "company formation dubai", "pro services dubai", "pos systems uae", "crm solutions uae"],
   icons: {
     icon: '/site_identity.png',
     shortcut: '/site_identity.png',
     apple: '/site_identity.png',
   },
-  metadataBase: new URL('https://vistadocs.ae'),
+  metadataBase: new URL('https://vistadocscenter.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: 'https://vistadocs.ae',
+    url: 'https://vistadocscenter.com',
     siteName: 'VistaDocs Center',
-    title: 'VistaDocs Center - Visa & Technical Services in UAE',
-    description: 'Professional visa processing and technical services in Dubai, UAE.',
+    title: 'VistaDocs Center | UAE Business Launch & Growth Partner',
+    description: 'Premium UAE business services for visas, company formation, PRO work, and digital systems.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -43,34 +46,56 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Organization structured data
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['Organization', 'ProfessionalService', 'LocalBusiness'],
     name: 'VistaDocs Center',
-    description: 'Professional visa processing and technical services in Dubai, UAE',
-    url: 'https://vistadocs.ae',
-    logo: 'https://vistadocs.ae/site_identity.png',
+    description: 'UAE business launch and growth partner for visas, company formation, PRO services, attestation, Emirates ID, POS, CRM, and WordPress development.',
+    url: 'https://vistadocscenter.com',
+    logo: 'https://vistadocscenter.com/site_identity.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Dubai',
       addressCountry: 'AE',
     },
+    telephone: '+971507354640',
+    email: 'vistadocscenter@gmail.com',
     areaServed: {
       '@type': 'Country',
       name: 'United Arab Emirates',
+    },
+    sameAs: [
+      'https://web.facebook.com/profile.php?id=61586774744438',
+      'https://www.linkedin.com/in/vistadocs-center-b4988b3a0/',
+      'https://instagram.com/vistadocs',
+    ],
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'VistaDocs Center',
+    url: 'https://vistadocscenter.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://vistadocscenter.com/blog?query={search_term_string}',
+      'query-input': 'required name=search_term_string',
     },
   };
 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${manrope.variable} ${spaceGrotesk.variable} antialiased`}
         suppressHydrationWarning
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <Header />
         <main className="min-h-screen">

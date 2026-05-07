@@ -24,54 +24,38 @@ export default function ServiceCard({ title, description, href, icon: Icon, cate
       className="group h-full"
     >
       <Link href={href} className="block h-full">
-        <div className="h-full bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 overflow-hidden relative">
+        <div className="h-full card hover:shadow-2xl transition-all duration-300 p-6 overflow-hidden relative">
           {/* Decorative background gradient */}
-          <div className={`absolute top-0 right-0 w-32 h-32 opacity-5 rounded-full blur-3xl ${
+          <div className={`absolute top-0 right-0 w-28 h-28 opacity-6 rounded-full blur-3xl ${
             category === 'visa' 
-              ? 'bg-primary-500' 
-              : 'bg-secondary-500'
+              ? 'bg-[var(--brand-primary)]' 
+              : 'bg-[var(--brand-accent)]'
           }`} />
           
           {/* Top accent bar */}
-          <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r transition-all duration-300 ${
-            category === 'visa' 
-              ? 'from-primary-500 via-primary-600 to-primary-500 group-hover:h-2' 
-              : 'from-secondary-500 via-secondary-600 to-secondary-500 group-hover:h-2'
-          }`} />
+          <div className={`absolute top-0 left-0 right-0 h-1.5 transition-all duration-300 ${category === 'visa' ? 'bg-[var(--brand-primary)] group-hover:h-2' : 'bg-[var(--brand-accent)] group-hover:h-2'}`} />
           
           {/* Icon with enhanced styling */}
-          <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
-            category === 'visa' 
-              ? 'bg-gradient-to-br from-primary-50 to-primary-100 group-hover:from-primary-100 group-hover:to-primary-200' 
-              : 'bg-gradient-to-br from-secondary-50 to-secondary-100 group-hover:from-secondary-100 group-hover:to-secondary-200'
-          } shadow-md group-hover:shadow-lg group-hover:scale-110`}>
-            <CategoryIcon className={`w-8 h-8 ${
-              category === 'visa' ? 'text-primary-600' : 'text-secondary-600'
-            }`} />
+          <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${category === 'visa' ? 'bg-[var(--muted-surface)]' : 'bg-[var(--muted-surface)]'} shadow-sm group-hover:shadow-md group-hover:scale-105`}>
+            <CategoryIcon className={`w-7 h-7 ${category === 'visa' ? 'text-[var(--brand-primary)]' : 'text-[var(--brand-accent)]'}`} />
           </div>
 
           {/* Content */}
-          <h3 className={`text-2xl font-bold text-gray-900 mb-4 transition-colors ${
-            category === 'visa' ? 'group-hover:text-primary-600' : 'group-hover:text-secondary-600'
-          }`}>
+          <h3 className={`text-xl font-semibold text-[var(--text-900)] mb-3 transition-colors ${category === 'visa' ? 'group-hover:text-[var(--brand-primary)]' : 'group-hover:text-[var(--brand-accent)]'}`}>
             {title}
           </h3>
-          <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
+          <p className="text-[var(--muted-text)] mb-6 line-clamp-3 leading-relaxed text-sm">
             {description}
           </p>
 
           {/* CTA with enhanced styling */}
-          <div className={`flex items-center font-semibold transition-all ${
-            category === 'visa' ? 'text-primary-600 group-hover:text-primary-700' : 'text-secondary-600 group-hover:text-secondary-700'
-          }`}>
-            <span>Learn more</span>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-3 transition-transform duration-300" />
+          <div className="flex items-center font-semibold transition-all text-[var(--brand-primary)]">
+            <span className="text-sm">Learn more</span>
+            <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
           </div>
           
           {/* Corner decoration */}
-          <div className={`absolute bottom-0 right-0 w-24 h-24 rounded-tl-full transition-opacity opacity-0 group-hover:opacity-10 ${
-            category === 'visa' ? 'bg-primary-500' : 'bg-secondary-500'
-          }`} />
+          <div className={`absolute bottom-0 right-0 w-20 h-20 rounded-tl-full transition-opacity opacity-0 group-hover:opacity-8 ${category === 'visa' ? 'bg-[var(--brand-primary)]' : 'bg-[var(--brand-accent)]'}`} />
         </div>
       </Link>
     </motion.div>
