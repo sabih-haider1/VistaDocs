@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
-import { connectToDatabase } from '@/lib/mongodb';
-import { BlogIndexPost } from '@/types/blog';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPublicBlogPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog | VistaDocs Center',
@@ -15,39 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-async function getBlogPosts(page: number = 1, postsPerPage: number = 12) {
-  const { db } = await connectToDatabase();
-  
-  const skip = (page - 1) * postsPerPage;
-  
-  const [posts, total] = await Promise.all([
-    db.collection('posts')
-      .find({ 'seo.noindex': { $ne: true } })
-      .sort({ publishedAt: -1 })
-      .skip(skip)
-      .limit(postsPerPage)
-      .project({
-        slug: 1,
-        title: 1,
-        metaDescription: 1,
-        excerpt: 1,
-        publishedAt: 1,
-        category: 1,
-        author: 1,
-        readTime: 1,
-        coverImage: 1,
-      })
-      .toArray(),
-    db.collection('posts').countDocuments({ 'seo.noindex': { $ne: true } })
-  ]);
-
-  return {
-    posts: posts as unknown as BlogIndexPost[],
-    total,
-    totalPages: Math.ceil(total / postsPerPage),
-  };
-}
-
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function BlogPage({
@@ -57,7 +23,7 @@ export default async function BlogPage({
 }) {
   const { page: pageParam } = await searchParams;
   const page = parseInt(pageParam || '1');
-  const { posts, totalPages } = await getBlogPosts(page);
+  const { posts, totalPages } = await getPublicBlogPosts(page);
 
   return (
     <div className="pt-24">

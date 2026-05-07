@@ -195,6 +195,9 @@ const blogPost = {
     relatedServices: ['employment-visa-uae', 'emirates-id-application'],
   },
   featured: true,
+  status: 'published',
+  createdAt: new Date('2026-02-08T10:00:00Z'),
+  updatedAt: new Date('2026-02-08T10:00:00Z'),
   readTime: 8,
 };
 

@@ -102,7 +102,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { db } = await connectToDatabase();
     const posts = await db
       .collection('posts')
-      .find({ 'seo.noindex': { $ne: true } })
+      .find({
+        $or: [{ status: 'published' }, { status: { $exists: false } }],
+        'seo.noindex': { $ne: true },
+      })
       .project({ slug: 1, updatedAt: 1, publishedAt: 1 })
       .toArray();
 

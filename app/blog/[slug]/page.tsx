@@ -1,26 +1,15 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { connectToDatabase } from '@/lib/mongodb';
-import { BlogPost } from '@/types/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { getPublishedBlogPostBySlug } from '@/lib/blog';
 
 type RelatedService = {
   slug: string;
   title: string;
   category: 'visa-services' | 'technical-services';
 };
-
-async function getPost(slug: string): Promise<BlogPost | null> {
-  const { db } = await connectToDatabase();
-  
-  const post = await db.collection('posts').findOne({ slug });
-  
-  if (!post) return null;
-  
-  return post as unknown as BlogPost;
-}
 
 async function getRelatedServices(serviceSlugs: string[]) {
   // Import service data dynamically
@@ -56,7 +45,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const post = await getPublishedBlogPostBySlug(slug);
   
   if (!post) {
     return {
@@ -96,7 +85,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const post = await getPublishedBlogPostBySlug(slug);
   
   if (!post || post.seo.noindex) {
     notFound();
