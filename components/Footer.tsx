@@ -142,6 +142,11 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href="/sitemap.xml" className="hover:text-primary-400 transition-colors">
+                  Sitemap
+                </Link>
+              </li>
             </ul>
           </div>
 
