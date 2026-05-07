@@ -6,6 +6,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
+type RelatedService = {
+  slug: string;
+  title: string;
+  category: 'visa-services' | 'technical-services';
+};
+
 async function getPost(slug: string): Promise<BlogPost | null> {
   const { db } = await connectToDatabase();
   
@@ -20,11 +26,6 @@ async function getRelatedServices(serviceSlugs: string[]) {
   // Import service data dynamically
   const { visaServicesData } = await import('@/data/visa-services');
   const { technicalServicesData } = await import('@/data/technical-services');
-  type RelatedService = {
-    slug: string;
-    title: string;
-    category: 'visa-services' | 'technical-services';
-  };
   
   const services = serviceSlugs.map((slug): RelatedService | null => {
     // Check visa services first
@@ -44,7 +45,7 @@ async function getRelatedServices(serviceSlugs: string[]) {
       };
     }
     return null;
-  }).filter(Boolean);
+  }).filter((service): service is RelatedService => service !== null);
   
   return services;
 }
