@@ -45,6 +45,22 @@ export default function BlogForm({
 }) {
   const [coverImage, setCoverImage] = useState(initialValues.coverImage || '');
   const [slugTouched, setSlugTouched] = useState(Boolean(initialValues.slug));
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (formData: FormData) => {
+    try {
+      setSubmitError(null);
+      setIsSubmitting(true);
+      await action(formData);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to save post';
+      setSubmitError(message);
+      console.error('Form submission error:', message);
+      setIsSubmitting(false);
+    }
+  };
 
   const handleFeaturedImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -53,21 +69,32 @@ export default function BlogForm({
       return;
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
+    try {
+      setUploadError(null);
+      const formData = new FormData();
+      formData.append('file', file);
 
-    const response = await fetch('/api/admin/upload', {
-      method: 'POST',
-      body: formData,
-    });
+      const response = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
 
-    if (!response.ok) {
-      return;
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        const errorMessage = data?.error || `Upload failed (${response.status})`;
+        setUploadError(errorMessage);
+        console.error('Featured image upload error:', errorMessage);
+        return;
+      }
+
+      const data = (await response.json()) as { url: string };
+      setCoverImage(data.url);
+      event.target.value = '';
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Upload failed';
+      setUploadError(message);
+      console.error('Featured image upload error:', message);
     }
-
-    const data = (await response.json()) as { url: string };
-    setCoverImage(data.url);
-    event.target.value = '';
   };
 
   const handleSlugChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +115,7 @@ export default function BlogForm({
     : 'vistadocs-blog-draft-new';
 
   return (
-    <form action={action} className="space-y-6">
+    <form action={handleSubmit} className="space-y-6">
       <input type="hidden" name="id" defaultValue={initialValues.id} />
       <input type="hidden" name="originalSlug" defaultValue={initialValues.originalSlug || initialValues.slug} />
       <input type="hidden" name="contentJson" defaultValue="" />
@@ -172,6 +199,11 @@ export default function BlogForm({
               />
               <Field label="Tags" name="tags" defaultValue={initialValues.tags} placeholder="uae visa, employment, compliance" textarea rows={3} />
               <Field label="Featured image URL" name="coverImage" defaultValue={coverImage} placeholder="Upload or paste an image URL" />
+              {uploadError && (
+                <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                  {uploadError}
+                </div>
+              )}
               <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-3 text-sm font-medium text-slate-600 transition hover:border-slate-400 hover:bg-slate-50">
                 <Upload className="h-4 w-4" />
                 Upload featured image
@@ -195,11 +227,17 @@ export default function BlogForm({
 
           <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="space-y-3">
+              {submitError && (
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <strong>Error:</strong> {submitError}
+                </div>
+              )}
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800"
+                disabled={isSubmitting}
+                className="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {submitLabel}
+                {isSubmitting ? 'Saving...' : submitLabel}
               </button>
               <p className="text-xs leading-5 text-slate-500">
                 {mode === 'create'
@@ -220,7 +258,7 @@ function Field({
   className,
   rows,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & {
+}: (React.InputHTMLAttributes<HTMLInputElement> | React.TextareaHTMLAttributes<HTMLTextAreaElement>) & {
   label: string;
   textarea?: boolean;
   className?: string;
@@ -237,7 +275,7 @@ function Field({
         />
       ) : (
         <input
-          {...props}
+          {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
           className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-100"
         />
       )}

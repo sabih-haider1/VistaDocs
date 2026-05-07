@@ -43,7 +43,9 @@ async function uploadImage(file: File) {
 
   if (!response.ok) {
     const data = await response.json().catch(() => null);
-    throw new Error(data?.error || 'Image upload failed');
+    const errorMessage = data?.error || `Upload failed (${response.status})`;
+    console.error('Upload error:', errorMessage);
+    throw new Error(errorMessage);
   }
 
   const data = (await response.json()) as { url: string };
@@ -100,8 +102,8 @@ export default function RichTextEditor({
             class: 'rounded-2xl bg-slate-950 text-slate-50 p-4 overflow-x-auto',
           },
         },
+        link: false,
       }),
-      Underline,
       Link.configure({
         openOnClick: false,
         autolink: true,
@@ -110,6 +112,7 @@ export default function RichTextEditor({
           class: 'text-cyan-700 underline underline-offset-4',
         },
       }),
+      Underline,
       Image.configure({
         inline: false,
         allowBase64: false,
@@ -196,8 +199,17 @@ export default function RichTextEditor({
       return;
     }
 
-    const url = await uploadImage(file);
-    editor.chain().focus().setImage({ src: url, alt: file.name }).run();
+    try {
+      setAutosaveState('saving');
+      const url = await uploadImage(file);
+      editor.chain().focus().setImage({ src: url, alt: file.name }).run();
+      setAutosaveState('saved');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Image upload failed';
+      console.error('Image upload error:', message);
+      alert(`Failed to upload image: ${message}`);
+      setAutosaveState('idle');
+    }
     event.target.value = '';
   };
 
