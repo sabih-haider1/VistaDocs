@@ -81,6 +81,7 @@ export default function RichTextEditor({
           },
         },
         link: false,
+        underline: false,
       }),
       Link.configure({
         openOnClick: false,
