@@ -26,7 +26,7 @@ export default async function NewBlogPage() {
           authorName: session.user.name || 'VistaDocs Editorial',
           authorRole: 'Content Editor',
           featured: false,
-          noindex: true,
+          noindex: false,
         }}
       />
     </div>

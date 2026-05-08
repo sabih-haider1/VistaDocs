@@ -52,6 +52,10 @@ export default function BlogForm({
       setIsSubmitting(true);
       await action(formData);
     } catch (err) {
+      if (isNextRedirectError(err)) {
+        throw err;
+      }
+
       const message = err instanceof Error ? err.message : 'Failed to save post';
       setSubmitError(message);
       console.error('Form submission error:', message);
@@ -258,4 +262,17 @@ function SelectField({
       </select>
     </label>
   );
+}
+
+function isNextRedirectError(error: unknown) {
+  if (!(error instanceof Error)) {
+    return false;
+  }
+
+  if (error.message === 'NEXT_REDIRECT') {
+    return true;
+  }
+
+  const digest = (error as Error & { digest?: string }).digest;
+  return typeof digest === 'string' && digest.startsWith('NEXT_REDIRECT');
 }

@@ -29,14 +29,14 @@ const allowedStyles = {
 
 export const blogFormSchema = z.object({
   id: z.string().optional(),
-  title: z.string().min(5).max(180),
-  slug: z.string().min(3).max(180),
-  metaDescription: z.string().min(50).max(170),
-  h1: z.string().min(5).max(180),
-  excerpt: z.string().min(40).max(280),
+  title: z.string().min(5, 'Title must be at least 5 characters').max(180, 'Title must be at most 180 characters'),
+  slug: z.string().min(3, 'Slug must be at least 3 characters').max(180, 'Slug must be at most 180 characters'),
+  metaDescription: z.string().min(50, 'Meta description must be at least 50 characters').max(170, 'Meta description must be at most 170 characters'),
+  h1: z.string().min(5, 'H1 must be at least 5 characters').max(180, 'H1 must be at most 180 characters'),
+  excerpt: z.string().min(40, 'Excerpt must be at least 40 characters').max(280, 'Excerpt must be at most 280 characters'),
   category: z.enum(blogCategories),
   tags: z.array(z.string().min(1)).default([]),
-  content: z.string().min(1),
+  content: z.string().min(1, 'Content cannot be empty'),
   contentJson: z.string().optional(),
   coverImage: z.string().url().optional().or(z.literal('')),
   status: z.enum(['draft', 'published']).default('draft'),
@@ -48,8 +48,8 @@ export const blogFormSchema = z.object({
   ogTitle: z.string().optional().or(z.literal('')),
   ogDescription: z.string().optional().or(z.literal('')),
   ogImage: z.string().url().optional().or(z.literal('')),
-  authorName: z.string().min(2).max(120),
-  authorRole: z.string().min(2).max(120),
+  authorName: z.string().min(2, 'Author name must be at least 2 characters').max(120, 'Author name must be at most 120 characters'),
+  authorRole: z.string().min(2, 'Author role must be at least 2 characters').max(120, 'Author role must be at most 120 characters'),
   authorBio: z.string().optional().or(z.literal('')),
 });
 
@@ -306,6 +306,8 @@ function splitCsv(value: string | undefined) {
 }
 
 export function parseBlogPayload(formData: FormData) {
+  const status = (formData.get('status')?.toString() || 'draft') as BlogStatus;
+
   const raw = {
     id: formData.get('id')?.toString() || undefined,
     title: formData.get('title')?.toString() || '',
@@ -318,11 +320,11 @@ export function parseBlogPayload(formData: FormData) {
     content: formData.get('content')?.toString() || '',
     contentJson: formData.get('contentJson')?.toString() || undefined,
     coverImage: formData.get('coverImage')?.toString() || '',
-    status: (formData.get('status')?.toString() || 'draft') as BlogStatus,
+    status,
     featured: formData.get('featured') === 'on',
     readTime: formData.get('readTime') ? Number(formData.get('readTime')) : undefined,
     canonicalUrl: formData.get('canonicalUrl')?.toString() || '',
-    noindex: formData.get('noindex') === 'on',
+    noindex: formData.get('noindex') === 'on' && status !== 'published',
     relatedServices: splitCsv(formData.get('relatedServices')?.toString()),
     ogTitle: formData.get('ogTitle')?.toString() || '',
     ogDescription: formData.get('ogDescription')?.toString() || '',
