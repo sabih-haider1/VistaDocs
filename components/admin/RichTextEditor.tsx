@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -15,7 +15,6 @@ import TableCell from '@tiptap/extension-table-cell';
 import {
   Bold,
   Code,
-  ImagePlus,
   Italic,
   Link2,
   List,
@@ -31,26 +30,6 @@ import {
   AlignCenter,
   AlignRight,
 } from 'lucide-react';
-
-async function uploadImage(file: File) {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  const response = await fetch('/api/admin/upload', {
-    method: 'POST',
-    body: formData,
-  });
-
-  if (!response.ok) {
-    const data = await response.json().catch(() => null);
-    const errorMessage = data?.error || `Upload failed (${response.status})`;
-    console.error('Upload error:', errorMessage);
-    throw new Error(errorMessage);
-  }
-
-  const data = (await response.json()) as { url: string };
-  return data.url;
-}
 
 function ToolbarButton({
   active,
@@ -92,7 +71,6 @@ export default function RichTextEditor({
 }) {
   const [html, setHtml] = useState(initialContent || '');
   const [autosaveState, setAutosaveState] = useState<'idle' | 'saved' | 'saving'>('idle');
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const editor = useEditor({
     extensions: [
@@ -188,35 +166,8 @@ export default function RichTextEditor({
     editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
   };
 
-  const handleUploadClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    try {
-      setAutosaveState('saving');
-      const url = await uploadImage(file);
-      editor.chain().focus().setImage({ src: url, alt: file.name }).run();
-      setAutosaveState('saved');
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Image upload failed';
-      console.error('Image upload error:', message);
-      alert(`Failed to upload image: ${message}`);
-      setAutosaveState('idle');
-    }
-    event.target.value = '';
-  };
-
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-      <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-4 py-3">
         <div className="flex flex-wrap gap-2">
           <ToolbarButton title="Paragraph" active={editor.isActive('paragraph')} onClick={() => editor.chain().focus().setParagraph().run()}>
@@ -251,9 +202,6 @@ export default function RichTextEditor({
           </ToolbarButton>
           <ToolbarButton title="Add link" onClick={promptForLink}>
             <Link2 className="h-4 w-4" />
-          </ToolbarButton>
-          <ToolbarButton title="Insert image" onClick={handleUploadClick}>
-            <ImagePlus className="h-4 w-4" />
           </ToolbarButton>
           <ToolbarButton
             title="Insert table"

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Upload } from 'lucide-react';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
 type BlogFormMode = 'create' | 'edit';
@@ -43,9 +42,7 @@ export default function BlogForm({
   action: (formData: FormData) => void | Promise<void>;
   submitLabel: string;
 }) {
-  const [coverImage, setCoverImage] = useState(initialValues.coverImage || '');
   const [slugTouched, setSlugTouched] = useState(Boolean(initialValues.slug));
-  const [uploadError, setUploadError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -59,41 +56,6 @@ export default function BlogForm({
       setSubmitError(message);
       console.error('Form submission error:', message);
       setIsSubmitting(false);
-    }
-  };
-
-  const handleFeaturedImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    try {
-      setUploadError(null);
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const data = await response.json().catch(() => null);
-        const errorMessage = data?.error || `Upload failed (${response.status})`;
-        setUploadError(errorMessage);
-        console.error('Featured image upload error:', errorMessage);
-        return;
-      }
-
-      const data = (await response.json()) as { url: string };
-      setCoverImage(data.url);
-      event.target.value = '';
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Upload failed';
-      setUploadError(message);
-      console.error('Featured image upload error:', message);
     }
   };
 
@@ -198,17 +160,7 @@ export default function BlogForm({
                 ]}
               />
               <Field label="Tags" name="tags" defaultValue={initialValues.tags} placeholder="uae visa, employment, compliance" textarea rows={3} />
-              <Field label="Featured image URL" name="coverImage" defaultValue={coverImage} placeholder="Upload or paste an image URL" />
-              {uploadError && (
-                <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
-                  {uploadError}
-                </div>
-              )}
-              <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-3 text-sm font-medium text-slate-600 transition hover:border-slate-400 hover:bg-slate-50">
-                <Upload className="h-4 w-4" />
-                Upload featured image
-                <input type="file" accept="image/*" className="hidden" onChange={handleFeaturedImageUpload} />
-              </label>
+              <Field label="Featured image URL" name="coverImage" defaultValue={initialValues.coverImage} placeholder="Paste an image URL" />
             </div>
           </section>
 
