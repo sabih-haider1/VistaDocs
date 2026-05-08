@@ -47,7 +47,7 @@ export default async function AdminSettingsPage() {
           <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-600">
             <li>Use <span className="font-semibold text-slate-900">AUTH_SECRET</span> or <span className="font-semibold text-slate-900">NEXTAUTH_SECRET</span> in production.</li>
             <li>Seed admin users into the <span className="font-semibold text-slate-900">users</span> collection with a bcrypt password hash.</li>
-            <li>Uploads are stored locally under <span className="font-semibold text-slate-900">public/uploads/blog</span> and can be swapped for cloud storage later.</li>
+            <li><strong>Local uploads (dev only):</strong> Stored under <span className="font-semibold text-slate-900">public/uploads/blog</span>. For production, use cloud storage (AWS S3, Cloudinary, etc.) or paste image URLs directly.</li>
           </ul>
         </section>
       </div>

@@ -43,8 +43,8 @@ const serviceCards = [
 ];
 
 export const metadata: Metadata = {
-  title: 'VistaDocs Center | UAE Business Launch & Growth Partner',
-  description: 'Premium UAE business services for visas, company formation, PRO work, attestation, Emirates ID, POS, CRM, and WordPress development.',
+  title: 'VistaDocs Center | UAE Business Setup, Visas & PRO Services',
+  description: 'Business setup, employment visas, PRO services, and document attestation for entrepreneurs and SMEs launching in Dubai, Abu Dhabi, Sharjah, and Ajman.',
 };
 
 function SectionTitle({ eyebrow, title, description }: { eyebrow?: string; title: string; description?: string }) {
@@ -71,14 +71,14 @@ export default function Home() {
                   {brand.tagline}
                 </span>
                 <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                  The premium UAE business services partner for visas, setup, operations, and digital growth.
+                  Company setup, visas, and renewals handled right.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                  VistaDocs Center helps entrepreneurs, investors, startups, and SMEs launch and operate in the UAE with one connected support system.
+                  Entrepreneurs, investors, and SMEs launch and operate in the UAE with clear guidance on licenses, visas, PRO work, and government approvals. No delays. No surprises.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-4 text-white shadow-lg transition-transform hover:-translate-y-0.5">
-                    Book a consultation
+                    Get a consultation
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link href={brand.whatsapp} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-4 text-slate-900 shadow-sm transition-transform hover:-translate-y-0.5">
@@ -87,7 +87,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {['Visa processing', 'Company setup', 'Digital systems'].map((item) => (
+                  {['Company formation', 'Visa processing', 'License renewals'].map((item) => (
                     <div key={item} className="rounded-2xl border border-slate-200 bg-white/75 px-4 py-3 text-sm font-medium text-slate-700 shadow-sm backdrop-blur">
                       {item}
                     </div>
@@ -103,9 +103,9 @@ export default function Home() {
                   </div>
                 ))}
                 <div className="sm:col-span-2 rounded-3xl border border-slate-200 bg-slate-950 p-6 text-white shadow-xl">
-                  <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Built for search and conversion</p>
+                  <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Real UAE business support</p>
                   <p className="mt-3 text-lg leading-8 text-slate-100">
-                    Answer-first content, strong internal linking, FAQs, and geo-targeted pages help the site rank in UAE search while giving visitors a clear next step.
+                    Company formation, visa processing, PRO services, and renewals—handled by people who know UAE procedures.
                   </p>
                 </div>
               </div>
@@ -117,9 +117,9 @@ export default function Home() {
       <section className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Trust"
-            title="Why businesses choose VistaDocs Center"
-            description="The brand should feel like an operating partner, not a generic lead-gen site. These trust cues reinforce expertise, clarity, and consistency."
+            eyebrow="Why choose us"
+            title="Built on trust and local experience"
+            description="Licensed PRO specialists, transparent pricing, and real progress updates—not a typing center or generic consultant."
           />
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
@@ -136,9 +136,9 @@ export default function Home() {
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Ecosystem"
-            title="One ecosystem for launch, compliance, and growth"
-            description="The site should connect services logically so a visitor looking for a visa can also discover setup, operations, and technology support."
+            eyebrow="Services"
+            title="Licenses, visas, and renewals in one place"
+            description="Company formation, visa sponsorship, PRO work, and document attestation—the complete range of UAE business services."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {servicePillars.map((pillar) => (
@@ -167,9 +167,9 @@ export default function Home() {
       <section id="services" className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Featured services"
-            title="High-intent services built for search and lead generation"
-            description="Each service area should target one primary keyword, answer the immediate question, and connect into the wider business ecosystem."
+            eyebrow="Main services"
+            title="Core services for UAE business owners"
+            description="Whether you're starting out, hiring your first employee, or renewing your license—we handle it straightforwardly."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {serviceCards.map((service) => {
@@ -195,9 +195,9 @@ export default function Home() {
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Process"
-            title="A clear UAE business setup process"
-            description="Simple, transparent steps reduce friction and improve conversion."
+            eyebrow="How it works"
+            title="Our process is simple and transparent"
+            description="Every project follows the same clear steps—from first meeting to approval and handover."
           />
           <div className="mt-10 grid gap-5 lg:grid-cols-4">
             {processSteps.map((step) => (
@@ -213,9 +213,9 @@ export default function Home() {
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Featured services"
-            title="Service pages to support topical authority"
-            description="The homepage should push visitors into deeper pages that reinforce one clear topic at a time."
+            eyebrow="Service guides"
+            title="In-depth guides on visas, licenses, and procedures"
+            description="Learn about visa types, license requirements, costs, and timelines before you reach out."
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {featuredServices.map((service) => (
@@ -233,8 +233,8 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl">
           <SectionTitle
             eyebrow="FAQ"
-            title="Answer-first FAQs for SEO, GEO, and AI search"
-            description="These questions handle objections and surface concise answers that search engines and AI tools can extract."
+            title="Common questions about UAE business setup and visas"
+            description="Answers to the questions we hear most from entrepreneurs and SME owners."
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {homepageFaqs.map((faq) => (
@@ -251,28 +251,28 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl">
           <div className="brand-surface grid gap-8 rounded-[2rem] p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">Content strategy</p>
-              <h2 className="mt-4 font-display text-3xl font-semibold text-slate-950">Build topical authority around visas, business setup, and UAE operations</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">Blog and resources</p>
+              <h2 className="mt-4 font-display text-3xl font-semibold text-slate-950">Guides, updates, and practical advice for UAE business owners</h2>
               <p className="mt-4 text-slate-600 leading-7">
-                The blog should publish practical, transactional, and regulatory content that supports the service pages and gives the site stronger entity coverage.
+                Step-by-step visa guides, license requirements, cost breakdowns, and regulatory updates—all written for people actually launching or running businesses in the UAE.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-700">
-                {['UAE visa guides', 'Company setup explainers', 'Regulatory updates', 'POS and CRM articles', 'Startup operations'].map((topic) => (
+                {['Visa guides', 'Company formation', 'License renewals', 'Startup operations', 'Government procedures'].map((topic) => (
                   <span key={topic} className="rounded-full border border-slate-200 bg-white px-4 py-2">{topic}</span>
                 ))}
               </div>
               <Link href="/blog" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-950">
-                View blog roadmap
+                View all guides
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="rounded-[1.75rem] bg-slate-950 p-6 text-white">
-              <p className="text-sm uppercase tracking-[0.18em] text-cyan-300">Conversion stack</p>
+              <p className="text-sm uppercase tracking-[0.18em] text-cyan-300">Get in touch</p>
               <ul className="mt-4 space-y-4 text-sm leading-7 text-slate-200">
-                <li className="flex gap-3"><Headset className="mt-1 h-4 w-4 text-cyan-300" /> Sticky WhatsApp and call access on every page.</li>
-                <li className="flex gap-3"><FileText className="mt-1 h-4 w-4 text-cyan-300" /> Lead forms with low-friction consultation prompts.</li>
-                <li className="flex gap-3"><ShieldCheck className="mt-1 h-4 w-4 text-cyan-300" /> Trust signals, testimonials, and process clarity.</li>
-                <li className="flex gap-3"><Clock3 className="mt-1 h-4 w-4 text-cyan-300" /> Fast answer-first sections for mobile and AI extraction.</li>
+                <li className="flex gap-3"><Headset className="mt-1 h-4 w-4 text-cyan-300" /> WhatsApp, phone, and live chat support.</li>
+                <li className="flex gap-3"><FileText className="mt-1 h-4 w-4 text-cyan-300" /> Quick consultation booking—no long forms.</li>
+                <li className="flex gap-3"><ShieldCheck className="mt-1 h-4 w-4 text-cyan-300" /> Transparent pricing and realistic timelines upfront.</li>
+                <li className="flex gap-3"><Clock3 className="mt-1 h-4 w-4 text-cyan-300" /> Regular updates on your project status.</li>
               </ul>
             </div>
           </div>
@@ -284,16 +284,16 @@ export default function Home() {
           <div className="brand-surface rounded-[2rem] p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">Next steps</p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-950">Ready to position VistaDocs Center as a premium UAE brand?</h2>
-                <p className="mt-4 text-slate-600 leading-7">The next best action is a consultation that qualifies the service need and routes the visitor to the right landing page.</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">Ready to get started?</p>
+                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-950">Let's handle your UAE business setup or visa processing</h2>
+                <p className="mt-4 text-slate-600 leading-7">Start with a free consultation. We'll understand your situation, confirm the service you need, and give you exact costs and timelines—no hidden fees or surprises.</p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-4 text-white">
-                    Contact us
+                    Book a consultation
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link href="/services" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-4 text-slate-900">
-                    Explore services
+                  <Link href={brand.whatsapp} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-4 text-slate-900">
+                    Message on WhatsApp
                   </Link>
                 </div>
               </div>

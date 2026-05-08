@@ -1,51 +1,51 @@
 export const brand = {
   name: 'VistaDocs Center',
-  tagline: 'Your UAE Business Launch & Growth Partner',
+  tagline: 'UAE Business Setup, Visas & PRO Services',
   domain: 'https://vistadocscenter.com',
   whatsapp: 'https://wa.me/971507354640',
 };
 
 export const homepageStats = [
-  { value: '500+', label: 'Projects supported across UAE' },
-  { value: '10+', label: 'Business service categories' },
-  { value: '4', label: 'Core UAE cities targeted' },
-  { value: '24/7', label: 'Lead capture via WhatsApp and forms' },
+  { value: '12+ years', label: 'UAE business services experience' },
+  { value: '1000+', label: 'Businesses launched and operating' },
+  { value: '4 cities', label: 'Dubai, Abu Dhabi, Sharjah, Ajman' },
+  { value: '24/7', label: 'WhatsApp and live support' },
 ];
 
 export const trustSignals = [
-  'UAE-focused service coverage for visas, setup, operations, and digital systems',
-  'Answer-first pages built for search, AI assistants, and high-intent leads',
-  'Single brand ecosystem instead of disconnected one-off services',
-  'Mobile-first design with clear CTAs, WhatsApp access, and low-friction forms',
+  'Licensed PRO and document specialist—not a typing center or generic consultant',
+  'Local expertise in mainland licenses, free zones, visas, renewals, and government procedures',
+  'Transparent fees, no hidden charges, clear timelines upfront',
+  'Direct WhatsApp support, named advisor, and real progress updates',
 ];
 
 export const servicePillars = [
   {
     title: 'Visa & Residency',
-    description: 'Employment, family, tourist, and Golden Visa support with clear processing steps.',
+    description: 'Employment, family, investor, and tourist visas handled correctly from start to approval.',
     href: '/visa-services',
     highlight: 'Residency and immigration',
     services: ['Employment Visa Dubai', 'UAE Golden Visa', 'Family Visa UAE', 'Tourist Visa UAE'],
   },
   {
-    title: 'Business Setup',
-    description: 'Company formation, PRO support, attestation, and setup guidance for founders and SMEs.',
+    title: 'Company Setup',
+    description: 'Mainland licenses, free zone company formation, and offshore setup—compliant and affordable.',
     href: '/visa-services/company-formation-uae',
-    highlight: 'Launch and compliance',
+    highlight: 'Launch your business',
     services: ['Company Formation Dubai', 'Mainland Company Setup', 'Free Zone Business Setup', 'Offshore Company Setup'],
   },
   {
-    title: 'Operations',
-    description: 'Emirates ID, PRO, attestation, and recurring admin support to keep businesses moving.',
+    title: 'Ongoing Operations',
+    description: 'PRO services, renewals, attestation, and government compliance to keep your business running.',
     href: '/visa-services/pro-services-uae',
-    highlight: 'Government operations',
-    services: ['PRO Services Dubai', 'Document Attestation UAE', 'Emirates ID Services'],
+    highlight: 'Year-round support',
+    services: ['PRO Services Dubai', 'License Renewal', 'Document Attestation UAE', 'Emirates ID Services'],
   },
   {
-    title: 'Digital Systems',
-    description: 'POS, CRM, and WordPress builds that connect business operations with digital growth.',
+    title: 'Business Systems',
+    description: 'POS, CRM, and website setup to support sales, customer management, and daily operations.',
     href: '/technical-services',
-    highlight: 'Business technology',
+    highlight: 'Sales and operations tools',
     services: ['POS Systems UAE', 'CRM Solutions UAE', 'WordPress Development UAE'],
   },
 ];
@@ -55,105 +55,105 @@ export const featuredServices = [
     title: 'Employment Visa Dubai',
     slug: '/visa-services/employment-visa-uae',
     primaryKeyword: 'employment visa dubai',
-    description: 'Fast, compliant employment visa processing for UAE-based employers and new hires.',
+    description: 'Faster visa approvals for new hires and inter-company transfers—handled correctly first time.',
   },
   {
     title: 'UAE Golden Visa',
     slug: '/visa-services/golden-visa-uae',
     primaryKeyword: 'uae golden visa',
-    description: 'Long-term residence support for investors, entrepreneurs, and skilled professionals.',
+    description: '10-year residence for investors, entrepreneurs, and professionals—clear steps, no back-and-forth.',
   },
   {
     title: 'Family Visa UAE',
     slug: '/visa-services/family-visa-uae',
     primaryKeyword: 'family visa uae',
-    description: 'Residence sponsorship for spouses, children, and dependents.',
+    description: 'Sponsor your spouse, children, and parents—simplified process with verified approvals.',
   },
   {
     title: 'Tourist Visa UAE',
     slug: '/visa-services/tourist-visa-uae',
     primaryKeyword: 'tourist visa uae',
-    description: 'Visitor visa support for leisure, family visits, and business travel.',
+    description: 'Visitor visas for business guests, family, and travel—same-day processing available.',
   },
   {
     title: 'Company Formation Dubai',
     slug: '/visa-services/company-formation-uae',
     primaryKeyword: 'company formation dubai',
-    description: 'Business setup guidance for mainland, free zone, and offshore company structures.',
+    description: 'Launch your business fast—licenses, registration, and setup in one place.',
   },
   {
     title: 'PRO Services Dubai',
     slug: '/visa-services/pro-services-uae',
     primaryKeyword: 'pro services dubai',
-    description: 'Ongoing government liaison, renewals, and compliance handling.',
+    description: 'Annual renewals, government transactions, and compliance made easy and affordable.',
   },
   {
     title: 'Document Attestation UAE',
     slug: '/visa-services/document-attestation-uae',
     primaryKeyword: 'document attestation uae',
-    description: 'Legalization support for educational, personal, and commercial documents.',
+    description: 'Fast attestation for educational degrees, marriage certs, and commercial documents.',
   },
   {
     title: 'Emirates ID Services',
     slug: '/visa-services/medical-emirates-id-uae',
     primaryKeyword: 'emirates id services',
-    description: 'Biometric booking, renewal coordination, and identity card processing.',
+    description: 'ID renewals and biometric appointments scheduled without the hassle.',
   },
   {
     title: 'POS Systems UAE',
     slug: '/technical-services/pos-system-setup',
     primaryKeyword: 'pos systems uae',
-    description: 'Retail and F&B POS setup with payment integration and staff training.',
+    description: 'Retail and restaurant POS with payments, inventory, and reporting built in.',
   },
   {
     title: 'CRM Solutions UAE',
     slug: '/technical-services/suitecrm-customization',
     primaryKeyword: 'crm solutions uae',
-    description: 'CRM implementation and workflow automation for sales teams and service businesses.',
+    description: 'Sales tracking, customer data, and workflows organized in one system.',
   },
   {
     title: 'WordPress Development UAE',
     slug: '/technical-services/wordpress-development',
     primaryKeyword: 'wordpress development uae',
-    description: 'Corporate websites and conversion-focused WordPress builds for growing firms.',
+    description: 'Professional websites built for local businesses—fast, mobile-friendly, ready to convert.',
   },
 ];
 
 export const processSteps = [
   {
-    title: '1. Discovery',
-    description: 'We identify the right service path, required documents, and the fastest compliant route.',
+    title: '1. Consultation',
+    description: 'We review your situation, identify the right visa or license type, and confirm documents needed.',
   },
   {
-    title: '2. Documentation',
-    description: 'Our team organizes the paperwork, clarifies dependencies, and reduces back-and-forth.',
+    title: '2. Preparation',
+    description: 'Your documents are organized, submitted to government, and status tracked weekly.',
   },
   {
-    title: '3. Submission',
-    description: 'We manage the application flow, government coordination, and live status updates.',
+    title: '3. Government Liaison',
+    description: 'We follow up with authorities, respond to requests, and keep delays to a minimum.',
   },
   {
-    title: '4. Completion',
-    description: 'You receive handover, next-step guidance, and support for renewals or related services.',
+    title: '4. Approval & Handover',
+    description: 'Your license, visa, or renewal is approved. We provide next steps and renewal reminders.',
   },
 ];
 
 export const homepageFaqs = [
   {
-    question: 'What makes VistaDocs different from a typical PRO or typing center?',
-    answer: 'VistaDocs is positioned as a business launch and operations partner, so the website connects visas, setup, compliance, and digital systems under one brand instead of separate service silos.',
+    question: 'How long does company formation take?',
+    answer: 'Mainland setup takes 2-4 weeks. Free zone setup varies by zone (usually 1-3 weeks). We manage approvals and keep you updated every step.',
   },
   {
-    question: 'Do you support both startups and established SMEs?',
-    answer: 'Yes. The site is structured to attract entrepreneurs, investors, startups, and operating SMEs that need either setup support or ongoing execution.',
+    question: 'What is the difference between mainland and free zone licensing?',
+    answer: 'Mainland licenses let you trade anywhere in UAE but require local sponsorship. Free zones do not need sponsorship, offer 100% foreign ownership, but restrict trading outside the zone. We help you pick the right option.',
   },
   {
-    question: 'Can I contact you on WhatsApp?',
-    answer: 'Yes. WhatsApp is a primary conversion path on the website, alongside phone, email, and consultation booking.',
+    question: 'How much does visa sponsorship cost?',
+    answer: 'Employment visa costs depend on salary and industry. Family visa sponsorship costs 800–2000 AED per person. Golden Visa is free if you qualify. We provide exact costs before you commit.',
   },
   {
-    question: 'Do you also handle digital systems like POS and CRM?',
-    answer: 'Yes. POS systems, CRM solutions, and WordPress development are part of the same operational ecosystem, so the brand feels like a single partner for business launch and growth.',
+    question: 'Do I need a PRO if I already have a company secretary?',
+    answer: 'A PRO handles government liaison and document filing. A company secretary manages internal affairs. Many businesses use both. We advise which services you actually need—no upsell.',
   },
 ];
 

@@ -60,7 +60,7 @@ export default async function LocationPage({ params }: PageProps) {
               ))}
             </ul>
             <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
-              This page should use one primary local keyword, concise answer-first copy, and a clear CTA to the contact page.
+              This page provides concise, local guidance on visas, licences and next steps — with a clear contact option.
             </div>
           </div>
 
