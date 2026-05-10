@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
 type BlogFormMode = 'create' | 'edit';
@@ -31,6 +31,33 @@ type BlogFormValues = {
   originalSlug?: string;
 };
 
+type GeneratedBlogDraft = {
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  slug: string;
+  h1: string;
+  excerpt: string;
+  featuredImageSuggestion: string;
+  contentHtml: string;
+  contentMarkdown: string;
+  faq: Array<{ question: string; answer: string }>;
+  cta: string;
+  category: 'technical' | 'regulatory' | 'case-study' | 'analysis';
+  tags: string[];
+  relatedServices: string[];
+  featured: boolean;
+  noindex: boolean;
+  readTime: number;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  authorName: string;
+  authorRole: string;
+  authorBio: string;
+};
+
 export default function BlogForm({
   mode,
   initialValues,
@@ -45,6 +72,111 @@ export default function BlogForm({
   const [slugTouched, setSlugTouched] = useState(Boolean(initialValues.slug));
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [aiNotice, setAiNotice] = useState<string | null>(null);
+  const [editorContent, setEditorContent] = useState(initialValues.content || '');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    setEditorContent(initialValues.content || '');
+  }, [initialValues.content]);
+
+  const setFormValue = (name: string, value: string | boolean) => {
+    const form = formRef.current;
+
+    if (!form) {
+      return;
+    }
+
+    const field = form.elements.namedItem(name);
+
+    if (!field) {
+      return;
+    }
+
+    if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+      if (typeof value === 'boolean' && field instanceof HTMLInputElement && field.type === 'checkbox') {
+        field.checked = value;
+        field.dispatchEvent(new Event('change', { bubbles: true }));
+        return;
+      }
+
+      field.value = String(value);
+      field.dispatchEvent(new Event('input', { bubbles: true }));
+      field.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  };
+
+  const applyDraftToForm = (draft: GeneratedBlogDraft, publish = false) => {
+    setFormValue('title', draft.title);
+    setFormValue('slug', draft.slug);
+    setFormValue('h1', draft.h1);
+    setFormValue('excerpt', draft.excerpt);
+    setFormValue('metaDescription', draft.metaDescription);
+    setFormValue('category', draft.category);
+    setFormValue('tags', draft.tags.join(', '));
+    setFormValue('relatedServices', draft.relatedServices.join(', '));
+    setFormValue('featured', draft.featured);
+    setFormValue('noindex', draft.noindex);
+    setFormValue('readTime', String(draft.readTime));
+    setFormValue('canonicalUrl', draft.canonicalUrl || '');
+    setFormValue('ogTitle', draft.ogTitle || draft.metaTitle);
+    setFormValue('ogDescription', draft.ogDescription || draft.metaDescription);
+    setFormValue('ogImage', draft.ogImage || '');
+    setFormValue('authorName', draft.authorName);
+    setFormValue('authorRole', draft.authorRole);
+    setFormValue('authorBio', draft.authorBio);
+    setFormValue('status', publish ? 'published' : 'draft');
+    setFormValue('contentJson', JSON.stringify(draft));
+    setEditorContent(draft.contentHtml);
+  };
+
+  const handleAiGenerate = async (publish = false) => {
+    if (!aiPrompt.trim()) {
+      setAiNotice('Please enter an AI brief first.');
+      return;
+    }
+
+    if (isGenerating) {
+      return;
+    }
+
+    setIsGenerating(true);
+    setAiNotice(null);
+
+    try {
+      const response = await fetch('/api/admin/ai-blog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: aiPrompt, publish }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `AI generation failed: ${response.status}`);
+      }
+
+      if (!data.draft) {
+        throw new Error('AI did not return a structured blog draft.');
+      }
+
+      applyDraftToForm(data.draft, publish);
+      setAiNotice(publish ? 'Generated and published successfully.' : 'Draft fields populated from AI.');
+
+      if (publish && data.id) {
+        window.location.href = `/admin/blogs/${data.id}/edit?saved=1`;
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to generate blog draft';
+      setAiNotice(message);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   const handleSubmit = async (formData: FormData) => {
     try {
@@ -81,10 +213,54 @@ export default function BlogForm({
     : 'vistadocs-blog-draft-new';
 
   return (
-    <form action={handleSubmit} className="space-y-6">
+    <form ref={formRef} action={handleSubmit} className="space-y-6">
       <input type="hidden" name="id" defaultValue={initialValues.id} />
       <input type="hidden" name="originalSlug" defaultValue={initialValues.originalSlug || initialValues.slug} />
       <input type="hidden" name="contentJson" defaultValue="" />
+
+      <section className="rounded-3xl border border-cyan-200 bg-cyan-50/70 p-6 shadow-sm">
+        <div className="mb-4 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700">AI Assistant</p>
+            <h2 className="mt-1 text-lg font-semibold text-slate-950">Generate and publish a complete post</h2>
+            <p className="mt-1 text-sm text-slate-600">
+              Describe the article you want. AI will fill every field in this form and can publish it directly to MongoDB.
+            </p>
+          </div>
+        </div>
+
+        <textarea
+          value={aiPrompt}
+          onChange={(e) => setAiPrompt(e.target.value)}
+          placeholder="Example: Create a premium SEO blog post about UAE employment visa processing in 2026. Audience: professionals and entrepreneurs. Include H1/H2/H3 structure, FAQ, CTA, internal links, and a conversion-focused tone."
+          className="min-h-[140px] w-full rounded-2xl border border-cyan-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-cyan-400 focus:ring-4 focus:ring-cyan-100"
+        />
+
+        <div className="mt-4 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={() => handleAiGenerate(false)}
+            disabled={isGenerating}
+            className="inline-flex items-center justify-center rounded-2xl border border-cyan-200 bg-white px-4 py-3 text-sm font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isGenerating ? 'Generating…' : 'Generate draft'}
+          </button>
+          <button
+            type="button"
+            onClick={() => handleAiGenerate(true)}
+            disabled={isGenerating}
+            className="inline-flex items-center justify-center rounded-2xl bg-cyan-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isGenerating ? 'Publishing…' : 'Generate & publish'}
+          </button>
+        </div>
+
+        {aiNotice && (
+          <div className="mt-4 rounded-2xl border border-cyan-200 bg-white px-4 py-3 text-sm text-slate-700">
+            {aiNotice}
+          </div>
+        )}
+      </section>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.8fr)]">
         <div className="space-y-6">
@@ -118,6 +294,7 @@ export default function BlogForm({
             <RichTextEditor
               name="content"
               initialContent={initialValues.content || ''}
+              content={editorContent}
               storageKey={storageKey}
             />
           </section>

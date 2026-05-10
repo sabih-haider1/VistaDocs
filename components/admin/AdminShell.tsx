@@ -11,11 +11,13 @@ import {
   LogOut,
   Settings,
   Shield,
+  Sparkles,
 } from 'lucide-react';
 
 const navigation = [
   { href: '/admin', label: 'Overview', icon: BarChart3 },
   { href: '/admin/blogs', label: 'Blogs', icon: BookOpen },
+  { href: '/admin/ai-assistant', label: 'AI Assistant', icon: Sparkles },
   { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
 

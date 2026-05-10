@@ -92,6 +92,7 @@ export default async function BlogPostPage({
   }
 
   const relatedServices = await getRelatedServices(post.seo.relatedServices);
+  const hasCoverImage = Boolean(post.coverImage);
 
   // Structured data
   const articleSchema = {
@@ -138,8 +139,16 @@ export default async function BlogPostPage({
 
           {/* Article Header */}
           <article className="mt-8">
-            <header className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
+            <header
+              className={`mb-8 ${
+                hasCoverImage ? '' : 'mx-auto max-w-3xl text-center'
+              }`}
+            >
+              <div
+                className={`flex items-center gap-3 mb-4 ${
+                  hasCoverImage ? '' : 'justify-center flex-wrap'
+                }`}
+              >
                 <span className="text-sm font-medium text-blue-600 uppercase tracking-wide">
                   {post.category.replace('-', ' ')}
                 </span>
@@ -158,14 +167,28 @@ export default async function BlogPostPage({
                 <span className="text-sm text-gray-500">{post.readTime} min read</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1
+                className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${
+                  hasCoverImage ? '' : 'mx-auto'
+                }`}
+              >
                 {post.h1}
               </h1>
 
-              <p className="text-xl text-gray-600 mb-6">{post.metaDescription}</p>
+              <p
+                className={`text-xl text-gray-600 mb-6 ${
+                  hasCoverImage ? '' : 'mx-auto'
+                }`}
+              >
+                {post.metaDescription}
+              </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
+              <div
+                className={`flex items-center gap-3 pt-4 border-t border-gray-200 ${
+                  hasCoverImage ? '' : 'justify-center'
+                }`}
+              >
                 <div>
                   <p className="font-medium text-gray-900">{post.author.name}</p>
                   <p className="text-sm text-gray-500">{post.author.role}</p>

@@ -61,15 +61,17 @@ function ToolbarButton({
 export default function RichTextEditor({
   name,
   initialContent,
+  content,
   placeholder = 'Write the post body...',
   storageKey,
 }: {
   name: string;
   initialContent: string;
+  content?: string;
   placeholder?: string;
   storageKey: string;
 }) {
-  const [html, setHtml] = useState(initialContent || '');
+  const [html, setHtml] = useState((content ?? initialContent) || '');
   const [autosaveState, setAutosaveState] = useState<'idle' | 'saved' | 'saving'>('idle');
 
   const editor = useEditor({
@@ -142,6 +144,18 @@ export default function RichTextEditor({
 
     return () => window.clearTimeout(timeout);
   }, [editor, html, storageKey]);
+
+  useEffect(() => {
+    if (!editor || typeof content !== 'string') {
+      return;
+    }
+
+    if (content !== html) {
+      editor.commands.setContent(content, { emitUpdate: false });
+      setHtml(content);
+      setAutosaveState('saving');
+    }
+  }, [content, editor, html]);
 
   if (!editor) {
     return (
