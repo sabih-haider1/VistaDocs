@@ -52,5 +52,38 @@ export default async function TechnicalServicePage({ params }: PageProps) {
     slug,
   };
 
-  return <ServicePageClient service={fullService} category="technical" />;
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://vistadocscenter.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Technical Services',
+        item: 'https://vistadocscenter.com/technical-services',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.seo.title,
+        item: `https://vistadocscenter.com/technical-services/${slug}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ServicePageClient service={fullService} category="technical" />
+    </>
+  );
 }

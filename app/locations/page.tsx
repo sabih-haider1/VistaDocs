@@ -4,10 +4,17 @@ import { ArrowRight, MapPinned, Sparkles } from 'lucide-react';
 import { locations } from '@/data/site-architecture';
 
 export const metadata: Metadata = {
-  title: 'Locations | VistaDocs Center',
-  description: 'UAE business services in Dubai, Abu Dhabi, Sharjah, and Ajman.',
+  title: 'UAE Locations | Dubai, Abu Dhabi, Sharjah & Ajman | VistaDocs',
+  description: 'Find local business services in Dubai, Abu Dhabi, Sharjah, and Ajman. VistaDocs provides visa, company formation, PRO, and digital solutions across all emirates.',
+  keywords: ['dubai business services', 'abu dhabi visa services', 'sharjah company formation', 'ajman business setup', 'uae business services', 'local business support'],
   alternates: {
     canonical: '/locations',
+  },
+  openGraph: {
+    title: 'UAE Locations | VistaDocs Center',
+    description: 'Local business services in Dubai, Abu Dhabi, Sharjah, and Ajman.',
+    url: 'https://vistadocscenter.com/locations',
+    type: 'website',
   },
 };
 

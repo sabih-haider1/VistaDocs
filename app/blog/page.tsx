@@ -4,14 +4,15 @@ import Image from 'next/image';
 import { getPublicBlogPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog | VistaDocs Center',
-  description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',
+  title: 'Blog | UAE Business Guides: Visa, Company Formation & Digital Systems',
+  description: 'In-depth guides and expert tips on UAE employment visa, company formation, PRO services, POS systems, CRM solutions, and WordPress development for entrepreneurs and SMEs.',
+  keywords: ['uae business guides', 'dubai visa guide', 'company formation guide uae', 'business setup tips dubai', 'digital systems uae'],
   alternates: {
     canonical: '/blog',
   },
   openGraph: {
-    title: 'VistaDocs Blog | UAE Business Guides',
-    description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',
+    title: 'Blog | UAE Business Guides & Implementation Tips',
+    description: 'Expert guides on UAE visas, business setup, compliance, and digital systems.',
     url: 'https://vistadocscenter.com/blog',
     type: 'website',
   },

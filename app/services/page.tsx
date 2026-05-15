@@ -4,10 +4,17 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Workflow } from 'lucide-react';
 import { featuredServices, processSteps, servicePillars } from '@/data/site-architecture';
 
 export const metadata: Metadata = {
-  title: 'Services | VistaDocs Center',
-  description: 'Explore UAE visa services, company formation, PRO support, attestation, Emirates ID, POS systems, CRM solutions, and WordPress development.',
+  title: 'All Services | VistaDocs Center - UAE Business & Digital Solutions',
+  description: 'Complete UAE business services: visa sponsorship, company formation, PRO services, attestation, Emirates ID, POS systems, CRM solutions, and WordPress web development.',
+  keywords: ['uae business services', 'dubai visa services', 'company formation dubai', 'pro services uae', 'pos systems dubai', 'crm solutions uae', 'wordpress development dubai'],
   alternates: {
     canonical: '/services',
+  },
+  openGraph: {
+    title: 'All Services | VistaDocs Center',
+    description: 'UAE visa, business, compliance, and digital services in one platform.',
+    url: 'https://vistadocscenter.com/services',
+    type: 'website',
   },
 };
 

@@ -52,5 +52,38 @@ export default async function VisaServicePage({ params }: PageProps) {
     slug,
   };
 
-  return <ServicePageClient service={fullService} category="visa" />;
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://vistadocscenter.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Visa Services',
+        item: 'https://vistadocscenter.com/visa-services',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.seo.title,
+        item: `https://vistadocscenter.com/visa-services/${slug}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ServicePageClient service={fullService} category="visa" />
+    </>
+  );
 }
