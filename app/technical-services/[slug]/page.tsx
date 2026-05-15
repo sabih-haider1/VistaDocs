@@ -33,6 +33,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: service.seo.metaDescription,
       type: 'website',
     },
+    alternates: {
+      canonical: `/technical-services/${slug}`,
+    },
   };
 }
 

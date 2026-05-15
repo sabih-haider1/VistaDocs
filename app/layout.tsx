@@ -23,9 +23,6 @@ export const metadata: Metadata = {
     apple: '/site_identity.png',
   },
   metadataBase: new URL('https://vistadocscenter.com'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_AE',

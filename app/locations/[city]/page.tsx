@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${location.city} UAE Business Services | VistaDocs Center`,
     description: location.description,
+    alternates: {
+      canonical: `/locations/${location.slug}`,
+    },
   };
 }
 

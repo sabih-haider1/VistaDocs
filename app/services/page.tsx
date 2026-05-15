@@ -6,6 +6,9 @@ import { featuredServices, processSteps, servicePillars } from '@/data/site-arch
 export const metadata: Metadata = {
   title: 'Services | VistaDocs Center',
   description: 'Explore UAE visa services, company formation, PRO support, attestation, Emirates ID, POS systems, CRM solutions, and WordPress development.',
+  alternates: {
+    canonical: '/services',
+  },
 };
 
 export default function ServicesPage() {

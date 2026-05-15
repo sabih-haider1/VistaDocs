@@ -45,6 +45,9 @@ const serviceCards = [
 export const metadata: Metadata = {
   title: 'VistaDocs Center | UAE Business Setup, Visas & PRO Services',
   description: 'Business setup, employment visas, PRO services, and document attestation for entrepreneurs and SMEs launching in Dubai, Abu Dhabi, Sharjah, and Ajman.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 function SectionTitle({ eyebrow, title, description }: { eyebrow?: string; title: string; description?: string }) {

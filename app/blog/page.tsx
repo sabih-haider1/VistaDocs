@@ -6,6 +6,9 @@ import { getPublicBlogPosts } from '@/lib/blog';
 export const metadata: Metadata = {
   title: 'Blog | VistaDocs Center',
   description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',
+  alternates: {
+    canonical: '/blog',
+  },
   openGraph: {
     title: 'VistaDocs Blog | UAE Business Guides',
     description: 'Practical UAE guides on visas, company formation, business operations, POS systems, CRM, and WordPress development.',

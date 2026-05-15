@@ -6,6 +6,9 @@ import { locations } from '@/data/site-architecture';
 export const metadata: Metadata = {
   title: 'Locations | VistaDocs Center',
   description: 'UAE business services in Dubai, Abu Dhabi, Sharjah, and Ajman.',
+  alternates: {
+    canonical: '/locations',
+  },
 };
 
 export default function LocationsPage() {
